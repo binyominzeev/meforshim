@@ -60,7 +60,7 @@ Az előzetes eredmény a hűségre épül: a modell csak azt jelentheti, amit a 
 | [pipeline.py](pipeline.py) | A teljes folyamat (kinyerés, ellenőrzés, összevonás, kimenet). A promptok itt vannak. |
 | [benchmark.py](benchmark.py) | Különböző MI-modellek/szolgáltatók összemérése ugyanazzal a prompttal. |
 | [llm.py](llm.py) | Közös modellregiszter és hívó réteg (Anthropic, OpenAI, Google), árak, költségszámítás. |
-| [viewer.py](viewer.py) | Az `out/<vers>/result-*.json` legfrissebb fájljából versenként önálló `kerdes-terkep.html`-t készít (kibontható listák; a magyarázók neve új ablakban a Sefaria forrásszövegére linkel). |
+| [viewer.py](viewer.py) | Az `out/<vers>/result-*.json` legfrissebb fájljából versenként önálló `kerdes-terkep.html`-t készít (kibontható listák, gépelés közben frissülő keresési számlálók; a kérdés találatakor a válaszok is láthatók; a magyarázók neve új ablakban a Sefaria forrásszövegére linkel). |
 | [env.py](env.py) | Minimális `.env` betöltő. |
 | `.env.example` | Sablon az API-kulcsokhoz. A saját `.env` gitignore-olt. |
 | `out/<Könyv.fej.vers>/` | Versenként: `verse.json`, `links.json` (letöltés-gyorsítótár), `result-<tag>.md/.json`, `<tag>/` köztes fájlok, `kerdes-terkep.html`, `bench/`. |

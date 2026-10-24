@@ -81,13 +81,13 @@ const whoLink=(name,ref)=>ref?`<a class="who" href="${esc(sefariaUrl(ref))}" tar
 function renderPanel(v){
   let h=`<div class="card panel">`;
   v.groups.forEach((g,gi)=>{
-    h+=`<details class="l1" data-k="${gi}"><summary>${esc(g.title)}<span class="n">${g.count}</span></summary>`;
+    h+=`<details class="l1" data-k="${gi}"><summary>${esc(g.title)}<span class="n group-count">${g.count}</span></summary>`;
     g.clusters.forEach((c,ci)=>{
       h+=`<details class="l2" data-k="${gi}.${ci}"><summary><span class="t">${esc(c.question)}</span>`+
-      `${c.implicit?'<span class="tag">implicit</span>':""}<span class="n">${c.n_commentators}</span></summary>`;
+      `${c.implicit?'<span class="tag">implicit</span>':""}<span class="n cluster-count">${c.n_commentators}</span></summary>`;
       c.answers.forEach(a=>{
         const who=whoLink(a.commentator,a.ref);
-        h+=`<div class="l3"><span class="t">${esc(a.answer)}</span> (${who}`+
+        h+=`<div class="l3" data-commentator="${esc(a.commentator)}"><span class="t">${esc(a.answer)}</span> (${who}`+
         `${a.verified===false?' <span class="warn" title="az idézet nem található a szövegben">⚠</span>':""})`+
         (a.quote?`<div class="quote">„${esc(a.quote)}"</div>`:"")+`</div>`;
       });
@@ -96,7 +96,7 @@ function renderPanel(v){
     h+="</details>";
   });
   if(v.pointers&&v.pointers.length){
-    h+=`<details class="l1"><summary>Csak utalás (nem kérdés)<span class="n">${v.pointers.length}</span></summary>`+
+    h+=`<details class="l1"><summary>Csak utalás (nem kérdés)<span class="n group-count">${v.pointers.length}</span></summary>`+
     v.pointers.map(p=>`<div class="l3 ptr">${whoLink(p.commentator,p.ref)}: ${esc(p.note)}</div>`).join("")+"</details>";
   }
   return h+"</div>";
@@ -110,13 +110,36 @@ function render(){
 
 function applySearch(){
   const t=$("s").value.trim().toLowerCase();
-  document.querySelectorAll("#panels .l3").forEach(e=>{
-    e.classList.toggle("hidden",t&&!e.textContent.toLowerCase().includes(t));
-  });
-  document.querySelectorAll("#panels .l2").forEach(d=>{
-    const vis=!t||d.querySelector(".t").textContent.toLowerCase().includes(t)||[...d.querySelectorAll(".l3")].some(x=>!x.classList.contains("hidden"));
-    d.classList.toggle("hidden",!vis);
-    if(t&&vis)d.open=true;
+  document.querySelectorAll("#panels .l1").forEach(group=>{
+    const clusters=[...group.querySelectorAll(".l2")];
+    if(clusters.length){
+      let visibleCount=0;
+      clusters.forEach(cluster=>{
+        const questionMatches=!t||cluster.querySelector(".t").textContent.toLowerCase().includes(t);
+        const answers=[...cluster.querySelectorAll(".l3")];
+        answers.forEach(answer=>{
+          answer.classList.toggle("hidden",!questionMatches&&t&&!answer.textContent.toLowerCase().includes(t));
+        });
+        const visibleAnswers=answers.filter(answer=>!answer.classList.contains("hidden"));
+        const visible=questionMatches||visibleAnswers.length>0;
+        cluster.classList.toggle("hidden",!visible);
+        cluster.querySelector(".cluster-count").textContent=new Set(visibleAnswers.map(answer=>answer.dataset.commentator)).size;
+        if(visible){
+          visibleCount++;
+          if(t)cluster.open=true;
+        }
+      });
+      group.classList.toggle("hidden",!visibleCount);
+      group.querySelector(".group-count").textContent=visibleCount;
+    }else{
+      const pointers=[...group.querySelectorAll(".l3")];
+      pointers.forEach(pointer=>{
+        pointer.classList.toggle("hidden",t&&!pointer.textContent.toLowerCase().includes(t));
+      });
+      const visibleCount=pointers.filter(pointer=>!pointer.classList.contains("hidden")).length;
+      group.classList.toggle("hidden",!visibleCount);
+      group.querySelector(".group-count").textContent=visibleCount;
+    }
   });
 }
 
