@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Pászuk-kommentár kérdés-térkép: tisztítás -> párhuzamos kinyerés -> összevonás -> nested lista.
+"""Pászuk-kommentár kérdés-térkép (v2).
+
+tisztítás -> párhuzamos kinyerés (magyarázónként) -> ellenőrzés/szűrés -> párhuzamos összevonás (horgonyonként) -> nested lista
 
 Használat:
     export ANTHROPIC_API_KEY=...        (vagy írd be az API_KEY konstansba)
@@ -8,14 +10,16 @@ Használat:
 """
 import argparse
 import asyncio
+import hashlib
 import json
 import re
 import sys
 import time
 from collections import OrderedDict
+from difflib import SequenceMatcher
 from pathlib import Path
 
-from clean import clean_links
+from clean import NIKUD, clean_links
 
 API_KEY = ""  # üresen hagyva az ANTHROPIC_API_KEY környezeti változót használja
 
@@ -36,42 +40,73 @@ SEGMENTS = OrderedDict([
 ])
 CTX_TITLE = "Nem konkrét szóhoz kötött, kontextuális kérdések"
 
-EXTRACT_SYSTEM = f"""You analyze classical Jewish Torah commentaries on one verse.
+# Egységes írásmód. A prompt kéri, az utófeldolgozás kikényszeríti (NAME_FIXES). Itt állítható át.
+NAMES_HINT = ("Ávráhám, Sára, Jichák, Jismáél, Hágár, Ketúra, Nóach, Onkelosz, Rashi, "
+              "Re'm (= Mizrachi, Rashi szuperkommentátora; Ra'am/Ra\"m/Re'em/Ráma helyett mindig Re'm)")
+NAME_FIXES = [
+    (r"\b(?:Ábrahám|Abrahám|Avraham|Abraham|Ávrahám)", "Ávráhám"),
+    (r"\b(?:Izsák|Icchák|Jicchák|Isaac|Yitzchak)", "Jichák"),
+    (r"\b(?:Iszmáel|Iszmáél|Ismáel|Ismáél|Ismael|Jišmáél|Jismáel|Jismael|Ishmael)", "Jismáél"),
+    (r"\bHagar", "Hágár"),
+    (r"\b(?:Noach|Noah|Nóah)", "Nóach"),
+    (r"\bRási", "Rashi"),
+    (r"\bOnkelos(?!z)", "Onkelosz"),
+    (r"\b(?:Ra'am|Ra\"m|Re'em|Ráma|Ramah|Ra'm|Rá\"m|Ra\"am)\b", "Re'm"),
+]
+
+EXTRACT_SYSTEM = f"""You analyze one classical Jewish commentary on a Torah verse, to build a map of the QUESTIONS the commentators address.
 
 VERSE (Genesis 17:17):
 {VERSE}
 
-Verse segments (use these keys as "anchor"):
-""" + "\n".join(f"{k}: {v}" for k, v in SEGMENTS.items()) + """
-CTX: the question is not about a specific word/phrase but about the wider context or theme
-     (e.g. Abraham's character and faith, relation to Sarah's laughter in ch. 18, to Ishmael in v.18, the meaning of the miracle).
+Verse segments (keys for "anchor"):
+""" + "\n".join(f"{k}: {v}" for k, v in SEGMENTS.items()) + f"""
+CTX: not tied to a specific phrase (see rules).
 
-You receive the text of ONE commentator on this verse. List every question/difficulty that the commentator addresses:
-- explicit=true: he states it as a question or a difficulty.
-- explicit=false: he does not state it, but his comment clearly answers it (infer the underlying question).
-Include linguistic/text-critical questions (meaning of a word, grammar, vocalization, cantillation) and
-questions the commentator raises about ANOTHER commentator (set "target" to that name, e.g. "Rashi"; otherwise null).
-Ignore content that is about other verses.
+You receive the text of ONE commentator on this verse. List every question/difficulty that this commentator addresses.
 
-Rules:
-- Write "question_hu" in Hungarian, self-contained, phrased about the verse itself (not "why does X say..."),
-  so the same question from different commentators gets similar wording. Keep Hebrew words in Hebrew.
+FIDELITY (the most important rule):
+- Report only what THIS commentator's text says. Never add interpretation, labels (e.g. "doubting", "rhetorical", "miracle") or background knowledge unless the commentator himself says so.
+- If he quotes another view and rejects it, report the position HE takes.
+- "quote": copy VERBATIM 3-10 consecutive words from the commentator's text, in the language you were given (no translation, no ellipsis), that support the answer.
+- If you are unsure what he means, omit the item instead of guessing.
+
+QUESTIONS:
+- explicit=true: he states it as a question/difficulty. explicit=false: he does not state it, but his comment clearly resolves it (infer the underlying question).
+- Include linguistic/text-critical questions (word meaning, grammar, vocalization, cantillation, translation).
+- If the question is raised about ANOTHER commentator (e.g. a supercommentary on Rashi), set "target" to that name; otherwise null.
+- Ignore content about other verses unless it is needed for the answer.
+
+ANCHOR RULES:
+- Use S1..S6 when the question arises from that phrase and is answered by what that phrase says or means: its wording, meaning, form, grammar, spelling, vocalization, cantillation, translation, or the content the phrase itself expresses.
+- Use CTX when the question needs the whole verse or several phrases to be understood, or goes beyond the verse: Abraham's faith/motives overall, the relation to Sarah's laughter (ch. 18), to Ishmael (v. 18) or other verses, theology, the nature of miracles, chronology, midrashic additions, narrative gaps.
+- Examples: "Does vayitzchak mean joy or mockery?" -> S2. "Why was Sarah rebuked and Abraham not?" -> CTX. "Did Abraham doubt God's promise?" -> CTX. "Why is 've'im' repeated before Sarah?" -> S5.
+
+CROSS-REFERENCES: if the commentator (or an entry in it) only points elsewhere ("see Radak", "see 18:13", "see Bereshit Rabbah") without content of its own, do NOT create an item; add a one-line Hungarian note to "pointers".
+
+STYLE:
+- "question_hu": Hungarian, self-contained, phrased about the verse itself (not "why does X say..."), so the same question from different commentators gets similar wording. Keep Hebrew words in Hebrew.
 - "answer_hu": ONE short Hungarian sentence with this commentator's answer.
-- Do not invent questions that the text does not support. If nothing relevant, return an empty list.
-- Output ONLY valid JSON, no prose, no code fences:
-{"items":[{"anchor":"S4","explicit":true,"target":null,"question_hu":"...","answer_hu":"..."}]}"""
+- Use exactly these spellings in Hungarian text: {NAMES_HINT}.
+- Use only Latin or Hebrew letters; never any other script.
 
-MERGE_SYSTEM = """You receive a numbered list of questions about Genesis 17:17, extracted from different commentators.
-Format of each line: id | anchor | explicit | target | question (Hungarian)
-
-Task: group lines that ask essentially the same question into clusters.
-- Do not merge genuinely different questions. Singletons are fine.
-- Every id must appear in exactly one cluster.
-- "question_hu": a clear canonical Hungarian formulation of the cluster's question.
-- "anchor": the best-fitting anchor key (S1..S6 or CTX) for the cluster.
 Output ONLY valid JSON, no prose, no code fences:
-{"clusters":[{"anchor":"S4","question_hu":"...","ids":[1,5,7]}]}"""
+{{"pointers":["..."],"items":[{{"anchor":"S4","explicit":true,"target":null,"question_hu":"...","answer_hu":"...","quote":"..."}}]}}"""
 
+MERGE_SYSTEM = f"""You receive questions about Genesis 17:17 extracted from different commentators. All lines belong to ONE group: {{group_desc}}.
+Line format: id | explicit/implicit | target | question || answer (shortened)
+
+Task: cluster lines that ask the SAME question.
+- Same topic is NOT enough. A debate usually holds several distinct sub-questions (for example: whether the age is unusual at all / whether the age-to-lifespan ratio still leaves the difficulty / whether Noah is a valid precedent). Keep such sub-questions as separate clusters.
+- If a cluster would exceed about 8 lines, check whether it mixes sub-questions, and split it.
+- Singletons are fine. Every id must appear in exactly one cluster.
+- "question_hu": a precise, neutral Hungarian formulation, specific enough to tell it apart from neighbouring clusters.
+- Use exactly these spellings: {NAMES_HINT}.
+Output ONLY valid JSON, no prose, no code fences:
+{{"clusters":[{{"question_hu":"...","ids":[1,5,7]}}]}}"""
+
+
+# ---------- segédek ----------
 
 class Meter:
     def __init__(self):
@@ -95,8 +130,47 @@ def parse_json(text: str):
         return json.loads(t[s:e + 1])
 
 
+def _allowed(ch: str) -> bool:
+    o = ord(ch)
+    return (o < 0x250 or 0x1E00 <= o <= 0x1EFF or 0x0590 <= o <= 0x05FF
+            or 0x2000 <= o <= 0x206F or 0x2190 <= o <= 0x21FF)
+
+
+def sanitize(s: str) -> str:
+    """Kidobja a nem latin/héber írásjegyeket (pl. a Haiku-tól néha becsúszó grúz betűt)."""
+    s = re.sub("[\u200b-\u200f\u202a-\u202e]", "", s or "")
+    return "".join(ch for ch in s if _allowed(ch)).strip()
+
+
+def normalize_hu(s: str) -> str:
+    s = sanitize(s)
+    for pat, rep in NAME_FIXES:
+        s = re.sub(pat, rep, s)
+    return s
+
+
+def norm(s: str) -> str:
+    s = NIKUD.sub("", (s or "").lower())
+    return " ".join(re.sub(r"[^\w\s]", " ", s).split())
+
+
+def quote_ok(quote: str, text_norm: str, words: set) -> bool:
+    """Puha ellenőrzés: az idézet szó szerint (vagy legalább 80%-ban) szerepel-e a magyarázó szövegében."""
+    q = norm(quote)
+    if not q:
+        return False
+    if q in text_norm:
+        return True
+    qw = q.split()
+    return len(qw) >= 3 and sum(w in words for w in qw) / len(qw) >= 0.8
+
+
+def slug(name):
+    return re.sub(r"[^A-Za-z0-9]+", "_", name).strip("_")
+
+
 async def call_model(client, model, system, user, max_tokens, meter):
-    """Egy hívás + egyszeri újrapróbálás, ha a JSON hibás. (A hálózati hibákat az SDK maga próbálja újra.)"""
+    """Egy hívás + egyszeri újrapróbálás hibás JSON esetén. (A hálózati hibákat/429-et az SDK próbálja újra.)"""
     for attempt in (1, 2):
         resp = await client.messages.create(
             model=model, max_tokens=max_tokens, system=system,
@@ -114,9 +188,7 @@ async def call_model(client, model, system, user, max_tokens, meter):
     raise RuntimeError("unreachable")
 
 
-def slug(name):
-    return re.sub(r"[^A-Za-z0-9]+", "_", name).strip("_")
-
+# ---------- 2. lépés: kinyerés ----------
 
 async def extract_all(client, commentators, a, meter, outdir):
     sem = asyncio.Semaphore(a.concurrency)
@@ -125,69 +197,130 @@ async def extract_all(client, commentators, a, meter, outdir):
 
     async def one(c):
         f = cache_dir / f"{slug(c['name'])}.json"
+        h = hashlib.sha1((EXTRACT_SYSTEM + a.extract_model + c["text"]).encode("utf-8")).hexdigest()
         if f.exists() and not a.force:
-            return c["name"], json.loads(f.read_text(encoding="utf-8"))["items"]
+            cached = json.loads(f.read_text(encoding="utf-8"))
+            if cached.get("hash") == h:  # prompt/modell/szöveg nem változott
+                return c["name"], cached
         async with sem:
             t0 = time.time()
             data = await call_model(client, a.extract_model, EXTRACT_SYSTEM,
                                     f"Commentator: {c['name']}\n\n{c['text']}", a.extract_max_tokens, meter)
-            items = data.get("items", [])
-            f.write_text(json.dumps({"items": items}, ensure_ascii=False, indent=1), encoding="utf-8")
-            print(f"  {c['name']}: {len(items)} kérdés ({time.time() - t0:.1f}s)")
-            return c["name"], items
+            rec = {"hash": h, "items": data.get("items", []), "pointers": data.get("pointers", [])}
+            f.write_text(json.dumps(rec, ensure_ascii=False, indent=1), encoding="utf-8")
+            print(f"  {c['name']}: {len(rec['items'])} kérdés, {len(rec['pointers'])} utalás ({time.time() - t0:.1f}s)")
+            return c["name"], rec
 
     return await asyncio.gather(*(one(c) for c in commentators))
 
 
-def build_items(extracted):
-    items, i = [], 0
-    for name, its in extracted:
-        for it in its:
+def build_items(extracted, commentators):
+    """Tisztítás, idézet-ellenőrzés, ismétlődések kiszűrése. Visszaadja: (items, pointers, statisztika)."""
+    texts = {c["name"]: norm(c["text"]) for c in commentators}
+    words = {n: set(t.split()) for n, t in texts.items()}
+    items, pointers, i = [], [], 0
+    for name, rec in extracted:
+        for p in rec.get("pointers", []):
+            p = normalize_hu(p)
+            if p:
+                pointers.append({"commentator": name, "note": p})
+        for it in rec.get("items", []):
+            q, ans = normalize_hu(it.get("question_hu", "")), normalize_hu(it.get("answer_hu", ""))
+            if not q or not ans:
+                continue
             i += 1
-            anchor = it.get("anchor") if it.get("anchor") in SEGMENTS else "CTX"
-            items.append({"id": i, "commentator": name, "anchor": anchor,
+            quote = it.get("quote", "") or ""
+            items.append({"id": i, "commentator": name,
+                          "anchor": it.get("anchor") if it.get("anchor") in SEGMENTS else "CTX",
                           "explicit": bool(it.get("explicit")), "target": it.get("target"),
-                          "question": it.get("question_hu", "").strip(),
-                          "answer": it.get("answer_hu", "").strip()})
-    return items
+                          "question": q, "answer": ans, "quote": quote,
+                          "verified": quote_ok(quote, texts[name], words[name])})
+    kept, dups = [], 0
+    for x in items:  # ugyanattól a magyarázótól közel azonos válasz = ismétlődés
+        if any(k["commentator"] == x["commentator"]
+               and SequenceMatcher(None, k["answer"], x["answer"]).ratio() > 0.8 for k in kept):
+            dups += 1
+            continue
+        kept.append(x)
+    stats = {"total": len(items), "dups": dups, "unverified": sum(not x["verified"] for x in kept)}
+    return kept, pointers, stats
 
 
-async def merge(client, items, a, meter):
-    lines = "\n".join(f"{x['id']} | {x['anchor']} | {'explicit' if x['explicit'] else 'implicit'} | "
-                      f"{x['target'] or '-'} | {x['question']}" for x in items)
-    data = await call_model(client, a.merge_model, MERGE_SYSTEM, lines, a.merge_max_tokens, meter)
-    clusters, seen = data.get("clusters", []), set()
-    valid = {x["id"] for x in items}
-    for c in clusters:
-        c["ids"] = [i for i in c.get("ids", []) if i in valid and i not in seen]
-        seen.update(c["ids"])
-    by_id = {x["id"]: x for x in items}
+# ---------- 3. lépés: összevonás horgonyonként, párhuzamosan ----------
+
+async def merge_group(client, key, group_items, a, meter):
+    if len(group_items) == 1:
+        x = group_items[0]
+        return [{"anchor": key, "question_hu": x["question"], "ids": [x["id"]]}]
+    desc = ("questions about the wider context/theme, not tied to one specific phrase" if key == "CTX"
+            else f"questions tied to the phrase {SEGMENTS[key]}")
+    lines = "\n".join(
+        f"{x['id']} | {'explicit' if x['explicit'] else 'implicit'} | {x['target'] or '-'} | "
+        f"{x['question']} || {x['answer'][:200]}" for x in group_items)
+    data = await call_model(client, a.merge_model, MERGE_SYSTEM.replace("{group_desc}", desc),
+                            lines, a.merge_max_tokens, meter)
+    valid = {x["id"] for x in group_items}
+    by_id = {x["id"]: x for x in group_items}
+    seen, clusters = set(), []
+    for c in data.get("clusters", []):
+        ids = [i for i in c.get("ids", []) if i in valid and i not in seen]
+        seen.update(ids)
+        if ids:
+            clusters.append({"anchor": key, "question_hu": normalize_hu(c.get("question_hu", "")), "ids": ids})
     for i in sorted(valid - seen):  # amit a modell kihagyott, az önálló klaszter lesz
-        clusters.append({"anchor": by_id[i]["anchor"], "question_hu": by_id[i]["question"], "ids": [i]})
-    return [c for c in clusters if c["ids"]]
+        clusters.append({"anchor": key, "question_hu": by_id[i]["question"], "ids": [i]})
+    return clusters
 
 
-def render(clusters, items):
+async def merge_all(client, items, a, meter):
+    groups = OrderedDict((k, []) for k in ["CTX", *SEGMENTS])
+    for x in items:
+        groups[x["anchor"]].append(x)
+    results = await asyncio.gather(*(merge_group(client, k, g, a, meter) for k, g in groups.items() if g))
+    return [c for r in results for c in r]
+
+
+# ---------- megjelenítés ----------
+
+def build_result(clusters, items, pointers):
     by_id = {x["id"]: x for x in items}
     groups = OrderedDict((k, []) for k in ["CTX", *SEGMENTS])
     for c in clusters:
-        groups.setdefault(c.get("anchor") if c.get("anchor") in groups else "CTX", []).append(c)
-    out = ["# Genesis 17:17 — kérdés-térkép", ""]
+        groups[c["anchor"]].append(c)
+    out = {"groups": [], "pointers": pointers}
     for key, cl in groups.items():
         if not cl:
             continue
         cl.sort(key=lambda c: -len({by_id[i]["commentator"] for i in c["ids"]}))
-        title = CTX_TITLE if key == "CTX" else SEGMENTS[key]
-        out.append(f"- **{title} ({len(cl)})**")
-        for c in cl:
-            members = [by_id[i] for i in c["ids"]]
-            n = len({m["commentator"] for m in members})
-            tag = " [implicit]" if not any(m["explicit"] for m in members) else ""
-            out.append(f"    - {c['question_hu']}{tag} ({n})")
-            for m in members:
-                out.append(f"        - {m['answer']} ({m['commentator']})")
+        out["groups"].append({
+            "anchor": key, "title": CTX_TITLE if key == "CTX" else SEGMENTS[key], "count": len(cl),
+            "clusters": [{
+                "question": c["question_hu"],
+                "implicit": not any(by_id[i]["explicit"] for i in c["ids"]),
+                "n_commentators": len({by_id[i]["commentator"] for i in c["ids"]}),
+                "answers": [{"commentator": by_id[i]["commentator"], "answer": by_id[i]["answer"],
+                             "quote": by_id[i]["quote"], "verified": by_id[i]["verified"]} for i in c["ids"]],
+            } for c in cl]})
+    return out
+
+
+def render_md(result):
+    out = ["# Genesis 17:17 — kérdés-térkép", ""]
+    for g in result["groups"]:
+        out.append(f"- **{g['title']} ({g['count']})**")
+        for c in g["clusters"]:
+            out.append(f"    - {c['question']}{' [implicit]' if c['implicit'] else ''} ({c['n_commentators']})")
+            for ans in c["answers"]:
+                mark = "" if ans["verified"] else " ⚠"
+                out.append(f"        - {ans['answer']} ({ans['commentator']}{mark})")
+    if result["pointers"]:
+        out += ["", "## Csak utalást tartalmazó bejegyzések (nem számítanak kérdésnek)"]
+        out += [f"- {p['commentator']}: {p['note']}" for p in result["pointers"]]
+    out += ["", "⚠ = az alátámasztó idézet nem található a magyarázó szövegében, kézzel ellenőrizendő."]
     return "\n".join(out) + "\n"
 
+
+# ---------- futtatás ----------
 
 async def main_async(a):
     outdir = Path(a.out)
@@ -203,26 +336,28 @@ async def main_async(a):
         return
 
     import anthropic
-    client = anthropic.AsyncAnthropic(api_key=API_KEY or None, max_retries=3)
+    client = anthropic.AsyncAnthropic(api_key=API_KEY or None, max_retries=5)
     meter = Meter()
 
     t1 = time.time()
     print(f"Kinyerés ({a.extract_model}, párhuzamosan: {a.concurrency})")
     extracted = await extract_all(client, commentators, a, meter, outdir)
-    items = build_items(extracted)
+    items, pointers, st = build_items(extracted, commentators)
     (outdir / "items.json").write_text(json.dumps(items, ensure_ascii=False, indent=1), encoding="utf-8")
     t2 = time.time()
-    print(f"  -> {len(items)} kérdés összesen, {t2 - t1:.1f}s")
+    print(f"  -> {st['total']} kérdés, {st['dups']} ismétlődés kiszűrve, {len(pointers)} csak-utalás, "
+          f"{st['unverified']} nem igazolt idézet ({t2 - t1:.1f}s)")
 
-    print(f"Összevonás ({a.merge_model})")
-    clusters = await merge(client, items, a, meter)
+    print(f"Összevonás ({a.merge_model}, horgonyonként párhuzamosan)")
+    clusters = await merge_all(client, items, a, meter)
     (outdir / "clusters.json").write_text(json.dumps(clusters, ensure_ascii=False, indent=1), encoding="utf-8")
     t3 = time.time()
-    print(f"  -> {len(clusters)} kérdés-klaszter, {t3 - t2:.1f}s")
+    print(f"  -> {len(clusters)} kérdés-klaszter ({t3 - t2:.1f}s)")
 
-    md = render(clusters, items)
-    (outdir / "result.md").write_text(md, encoding="utf-8")
-    print(f"\nKész: {outdir / 'result.md'}")
+    result = build_result(clusters, items, pointers)
+    (outdir / "result.json").write_text(json.dumps(result, ensure_ascii=False, indent=1), encoding="utf-8")
+    (outdir / "result.md").write_text(render_md(result), encoding="utf-8")
+    print(f"\nKész: {outdir / 'result.md'} (+ result.json)")
     print(f"Idő: kinyerés {t2 - t1:.1f}s + összevonás {t3 - t2:.1f}s = {t3 - t0:.1f}s összesen")
     print(f"Token: {meter.tin} in / {meter.tout} out, költség kb. ${meter.cost:.3f}")
 
@@ -235,8 +370,8 @@ if __name__ == "__main__":
     ap.add_argument("--keep-nikud", action="store_true")
     ap.add_argument("--extract-model", default="claude-haiku-5-5")
     ap.add_argument("--merge-model", default="claude-sonnet-5-5")
-    ap.add_argument("--concurrency", type=int, default=12)
-    ap.add_argument("--extract-max-tokens", type=int, default=6000)
+    ap.add_argument("--concurrency", type=int, default=40)
+    ap.add_argument("--extract-max-tokens", type=int, default=8000)
     ap.add_argument("--merge-max-tokens", type=int, default=8000)
     ap.add_argument("--force", action="store_true", help="a gyorsítótárazott kinyerést is újrafuttatja")
     ap.add_argument("--dry-run", action="store_true", help="csak tisztítás, nincs API-hívás")
