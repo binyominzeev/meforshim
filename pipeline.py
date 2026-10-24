@@ -4,7 +4,7 @@
 tisztítás -> párhuzamos kinyerés (magyarázónként) -> ellenőrzés/szűrés -> párhuzamos összevonás (horgonyonként) -> nested lista
 
 Használat:
-    export ANTHROPIC_API_KEY=...        (vagy írd be az API_KEY konstansba)
+    ANTHROPIC_API_KEY a .env fájlban (lásd .env.example) vagy környezeti változóként
     python pipeline.py links.json --dry-run      # csak tisztít, nem hív API-t
     python pipeline.py links.json                # teljes futás
 """
@@ -20,6 +20,9 @@ from difflib import SequenceMatcher
 from pathlib import Path
 
 from clean import NIKUD, clean_links
+from env import load_env
+
+load_env()  # .env a script mappájából; a benchmark.py is ezen keresztül kapja
 
 API_KEY = ""  # üresen hagyva az ANTHROPIC_API_KEY környezeti változót használja
 

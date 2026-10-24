@@ -56,6 +56,8 @@ Az előzetes eredmény a hűségre épül: a modell csak azt jelentheti, amit a 
 | [clean.py](clean.py) | Az 1. lépés: a Sefaria `links` kimenetének tisztítása. Önállóan is futtatható. |
 | [pipeline.py](pipeline.py) | A teljes folyamat (kinyerés, ellenőrzés, összevonás, kimenet). A promptok itt vannak. |
 | [benchmark.py](benchmark.py) | Különböző MI-modellek/szolgáltatók összemérése ugyanazzal a prompttal. |
+| [env.py](env.py) | Minimális `.env` betöltő (a `pipeline.py` használja). |
+| `.env.example` | Sablon az API-kulcsokhoz. A saját `.env` gitignore-olt. |
 | [links.json](links.json) | Bemenet: a Sefaria `/api/links/Genesis.17.17?with_text=1` válasza. |
 | `out/` | Kimenet és gyorsítótár (`cleaned.json`, `items.json`, `clusters.json`, `result.*`, `extract/`, `bench/`). |
 
@@ -66,7 +68,22 @@ pip install anthropic            # a pipeline-hoz
 pip install openai google-genai  # csak a benchmarkhoz
 ```
 
-API-kulcsok környezeti változóként: `ANTHROPIC_API_KEY`, a benchmarkhoz még `OPENAI_API_KEY` és `GEMINI_API_KEY` (vagy `GOOGLE_API_KEY`).
+## API-kulcsok
+
+A kulcsokat a projekt mappájában lévő `.env` fájlba írd (a fájl a `.gitignore` miatt nem kerül git-be):
+
+```
+cp .env.example .env
+# majd szerkeszd a .env-et:
+ANTHROPIC_API_KEY=sk-ant-...
+OPENAI_API_KEY=sk-...
+GEMINI_API_KEY=...
+```
+
+- A `pipeline.py` és a `benchmark.py` automatikusan betölti ([env.py](env.py), külső csomag nélkül).
+- A pipeline-hoz csak az `ANTHROPIC_API_KEY` kell. A benchmarkhoz az `OPENAI_API_KEY` és a `GEMINI_API_KEY` (vagy `GOOGLE_API_KEY`) is, de csak azokhoz a cégekhez, amiknek a modelljeit futtatod (`--only`).
+- Egy már beállított környezeti változó (`export ...`) elsőbbséget élvez a `.env`-vel szemben.
+- Ha git-be került már kulcs, forgasd el (rotáld) a szolgáltatónál.
 
 ## Használat
 
