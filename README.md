@@ -102,7 +102,7 @@ A nevek írásmódját a `NAMES_HINT` és a `NAME_FIXES` állítja be, a pászuk
 
 ```
 python benchmark.py links.json --list
-python benchmark.py links.json --only haiku,gemini-flash --sample 8     # olcsó próba
+python benchmark.py links.json --only haiku,gpt-6-luna,gemini-3.8-flash --sample 8     # olcsó próba
 python benchmark.py links.json --sample 25 --judge sonnet               # alapos mérés
 python benchmark.py links.json --models my_models.json                  # saját modelllista
 ```
@@ -112,6 +112,7 @@ python benchmark.py links.json --models my_models.json                  # saját
 | `--sample` | hány magyarázón fusson (alap: 25) |
 | `--only` | csak ezek a modellek (vesszővel elválasztva) |
 | `--reference` | referencia-modell a viszonyításhoz (alap: `sonnet`) |
+| `--include-optional` | az `optional` jelölésű, drága plafon-modellt (`gpt-6-astra`) is futtatja |
 | `--judge` | opcionális, vak LLM-bíró (extra költség; a saját családját előnyben részesítheti) |
 | `--merge-groups` | a legnagyobb ennyi horgonycsoporton fut az összevonás (alap: 6), `--skip-merge` kihagyja |
 | `--concurrency` | párhuzamos hívás modellenként (alap: 8) |
@@ -120,7 +121,9 @@ python benchmark.py links.json --models my_models.json                  # saját
 A riport: `out/bench/report.md`. Méri a késleltetést, a költséget (és a teljes anyagra becsült költséget), a JSON-hibákat, a nem igazolt idézetek arányát, az ismétlődést, az idegen írásjegyeket, a referenciával való egyezést, az összevonás minőségét és (opcionálisan) a bíró pontszámait.
 
 **Fontos:**
-- A `DEFAULT_MODELS` Google és OpenAI azonosítói csak kiindulópontok, a Google és OpenAI áraknál `None` áll, amíg nem adod meg őket (`"price": [bemenet, kimenet]` USD / millió token). Ellenőrizd őket.
+- A `DEFAULT_MODELS` a 2026. október 24-i hivatalos árlisták alapján készült. Haiku-osztály: `gpt-6-luna`, `gemini-3.5-flash-lite`, `gemini-3.8-flash`. Sonnet-osztály: `gpt-6.1-sol`, `gemini-4-argon`. Plafon (opcionális): `gpt-6-astra`.
+- A Gemini árak a promóciós időszak utáni (magasabb) listaárral szerepelnek (`gemini-4-argon`: 2026.12.1-től, `gemini-3.8-flash`: 2027.1.1-től), az OpenAI és Gemini batch kb. fele ennyi. Frissítsd a `price` mezőt, ha változik (`"price": [bemenet, kimenet]` USD / millió token).
+- A gondolkodás (reasoning) mindenhol alacsonyra van állítva (`reasoning_effort` / `thinking_level`), mert a tokenjei kimeneti áron számítanak. Érdemes egy magasabb szinttel is kipróbálni egy modellt `--models` JSON-nal.
 - Más szolgáltatót (OpenRouter, DeepSeek, Groq, Mistral stb.) az `openai_compat` providerrel veheted fel (`base_url`, `key_env`). Példa a fájlban kommentben van.
 - A referencia viszonyítási pont, nem igazság. A döntés előtt nézz bele néhány kimenetbe (`out/bench/<modell>/extract/*.json`), főleg a ⚠-os idézetekbe.
 

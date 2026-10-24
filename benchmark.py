@@ -39,13 +39,32 @@ from clean import clean_links
 
 # name: egyedi név; provider: anthropic | openai | google | openai_compat
 # price: (USD/M input, USD/M output) vagy None. extra: szolgáltató-specifikus paraméterek.
+# Állapot: 2026. október 24., a szolgáltatók hivatalos árlistái és modelloldalai alapján. Árak: standard,
+# rövid kontextus. Batch módban mindhárom cégnél kb. fele. "optional": csak --include-optional / --only esetén fut.
 DEFAULT_MODELS = [
+    # --- Anthropic (a jelenlegi pipeline) ---
     {"name": "haiku", "provider": "anthropic", "model": "claude-haiku-5-5", "price": P.PRICES["claude-haiku-5-5"]},
     {"name": "sonnet", "provider": "anthropic", "model": "claude-sonnet-5-5", "price": P.PRICES["claude-sonnet-5-5"]},
-    {"name": "gemini-flash", "provider": "google", "model": "gemini-3.8-flash", "price": None,
-     "extra": {"thinking_budget": 0}},
-    {"name": "gpt-mini", "provider": "openai", "model": "gpt-5.6-luna", "price": None,
+    # --- OpenAI ---
+    # Haiku-osztály: a GPT-6 család "cost-sensitive, high-volume" tagja, ugyanaz az ár mint a Haikué.
+    {"name": "gpt-6-luna", "provider": "openai", "model": "gpt-6-luna", "price": (0.10, 0.50),
      "extra": {"reasoning_effort": "low"}},
+    # Sonnet-osztály: "near-Astra performance at lower cost", ugyanaz az ár mint a Sonnet-é.
+    {"name": "gpt-6.1-sol", "provider": "openai", "model": "gpt-6.1-sol", "price": (2.00, 10.00),
+     "extra": {"reasoning_effort": "low"}},
+    # Plafon: a legerősebb OpenAI modell, 5x ár. Csak a minőség felső korlátjának felméréséhez.
+    {"name": "gpt-6-astra", "provider": "openai", "model": "gpt-6-astra", "price": (10.00, 50.00),
+     "extra": {"reasoning_effort": "low"}, "optional": True},
+    # --- Google ---
+    # Olcsó, gyors Flash-Lite. A gondolkodás nem kapcsolható ki, a legalacsonyabb szint a "minimal".
+    {"name": "gemini-3.5-flash-lite", "provider": "google", "model": "gemini-3.5-flash-lite",
+     "price": (0.30, 2.50), "extra": {"thinking_level": "minimal"}},
+    # Haiku/Sonnet közötti: a "legintelligensebb Flash". Ár: $0.75/$3.75 2026.12.31-ig, utána $1.50/$7.50 (ez van itt).
+    {"name": "gemini-3.8-flash", "provider": "google", "model": "gemini-3.8-flash", "price": (1.50, 7.50),
+     "extra": {"thinking_level": "low"}},
+    # Sonnet-osztály / zászlóshajó. Ár: $2/$10 2026.11.30-ig, utána $4/$20 (ez van itt).
+    {"name": "gemini-4-argon", "provider": "google", "model": "gemini-4-argon", "price": (4.00, 20.00),
+     "extra": {"thinking_level": "low"}},
     # Példa OpenAI-kompatibilis szolgáltatóra (OpenRouter, DeepSeek, Together, Groq, Mistral...):
     # {"name": "kimi", "provider": "openai_compat", "model": "moonshotai/kimi-k3.1-pro",
     #  "base_url": "https://openrouter.ai/api/v1", "key_env": "OPENROUTER_API_KEY", "price": [2.0, 10.0]},
@@ -109,8 +128,8 @@ async def complete(spec, system, user, max_tokens) -> Result:
         if prov == "google":
             from google.genai import types
             kw = {}
-            if "thinking_budget" in extra:
-                kw["thinking_config"] = types.ThinkingConfig(thinking_budget=extra["thinking_budget"])
+            if "thinking_level" in extra:  # a Gemini 3.x/4 modelleknél a thinking_budget helyett ez él
+                kw["thinking_config"] = types.ThinkingConfig(thinking_level=extra["thinking_level"].upper())
             cfg = types.GenerateContentConfig(system_instruction=system, max_output_tokens=max_tokens,
                                               response_mime_type="application/json", **kw)
             r = await c.aio.models.generate_content(model=spec["model"], contents=user, config=cfg)
@@ -464,14 +483,17 @@ def load_models(a):
     if a.only:
         want = [w.strip() for w in a.only.split(",")]
         models = [m for m in models if m["name"] in want]
+    elif not a.include_optional:
+        models = [m for m in models if not m.get("optional")]
     return models
 
 
 async def main_async(a):
     models = load_models(a)
     if a.list:
-        for m in models:
-            print(f"{m['name']:16} {m['provider']:14} {m['model']:32} ár={m.get('price')}")
+        for m in load_models(argparse.Namespace(models=a.models, only=None, include_optional=True)):
+            print(f"{m['name']:22} {m['provider']:10} {m['model']:24} ár={m.get('price')}"
+                  f"{'  (optional)' if m.get('optional') else ''}")
         return
     if not models:
         sys.exit("Nincs kiválasztott modell.")
@@ -483,7 +505,7 @@ async def main_async(a):
     ref_name = a.reference if a.reference in by_name else models[0]["name"]
     judge_spec = None
     if a.judge:
-        judge_spec = by_name.get(a.judge) or next((m for m in load_models(argparse.Namespace(models=a.models, only=None))
+        judge_spec = by_name.get(a.judge) or next((m for m in load_models(argparse.Namespace(models=a.models, only=None, include_optional=True))
                                                    if m["name"] == a.judge), None)
         if not judge_spec:
             sys.exit(f"Ismeretlen bíró: {a.judge}")
@@ -543,5 +565,6 @@ if __name__ == "__main__":
     ap.add_argument("--extract-max-tokens", type=int, default=8000)
     ap.add_argument("--merge-max-tokens", type=int, default=8000)
     ap.add_argument("--force", action="store_true")
+    ap.add_argument("--include-optional", action="store_true", help="az 'optional' (drága plafon) modelleket is futtatja")
     ap.add_argument("--list", action="store_true")
     asyncio.run(main_async(ap.parse_args()))
