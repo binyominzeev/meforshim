@@ -74,9 +74,9 @@ def pick(entry: dict, lang: str):
     return None, ""
 
 
-def clean_links(path, lang="auto", keep_nikud=False, anchor="Genesis 17:17", category="Commentary"):
-    with open(path, encoding="utf-8") as f:
-        data = json.load(f)
+def clean_links(data, lang="auto", keep_nikud=False, anchor=None, category="Commentary"):
+    """`data`: a Sefaria /api/links válasza (lista). `anchor`: csak az pontosan erre a versre horgonyzott
+    bejegyzések (a több versre kiterjedő kommentárok kimaradnak); None = nincs szűrés."""
     groups = OrderedDict()
     for e in data:
         if category and e.get("category") != category:
@@ -105,8 +105,10 @@ if __name__ == "__main__":
     ap.add_argument("--lang", default="auto", choices=["auto", "he", "en"])
     ap.add_argument("--keep-nikud", action="store_true")
     ap.add_argument("--out", default="cleaned.json")
+    ap.add_argument("--anchor", help='csak az erre a versre horgonyzott bejegyzések, pl. "Genesis 17:17"')
     a = ap.parse_args()
-    res = clean_links(a.links_json, a.lang, a.keep_nikud)
+    with open(a.links_json, encoding="utf-8") as f:
+        res = clean_links(json.load(f), a.lang, a.keep_nikud, a.anchor)
     with open(a.out, "w", encoding="utf-8") as f:
         json.dump(res, f, ensure_ascii=False, indent=1)
     total = sum(r["chars"] for r in res)

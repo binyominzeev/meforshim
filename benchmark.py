@@ -35,116 +35,11 @@ from itertools import combinations
 from pathlib import Path
 
 import pipeline as P
+import sefaria
 from clean import clean_links
+from llm import FRESH, MODELS as DEFAULT_MODELS, Result, complete, cost  # noqa: F401 - a modell-nyilvántartás az llm.py-ban van
 
-# name: egyedi név; provider: anthropic | openai | google | openai_compat
-# price: (USD/M input, USD/M output) vagy None. extra: szolgáltató-specifikus paraméterek.
-# Állapot: 2026. október 24., a szolgáltatók hivatalos árlistái és modelloldalai alapján. Árak: standard,
-# rövid kontextus. Batch módban mindhárom cégnél kb. fele. "optional": csak --include-optional / --only esetén fut.
-DEFAULT_MODELS = [
-    # --- Anthropic (a jelenlegi pipeline) ---
-    {"name": "haiku", "provider": "anthropic", "model": "claude-haiku-5-5", "price": P.PRICES["claude-haiku-5-5"]},
-    {"name": "sonnet", "provider": "anthropic", "model": "claude-sonnet-5-5", "price": P.PRICES["claude-sonnet-5-5"]},
-    # --- OpenAI ---
-    # Haiku-osztály: a GPT-6 család "cost-sensitive, high-volume" tagja, ugyanaz az ár mint a Haikué.
-    {"name": "gpt-6-luna", "provider": "openai", "model": "gpt-6-luna", "price": (0.10, 0.50),
-     "extra": {"reasoning_effort": "low"}},
-    # Sonnet-osztály: "near-Astra performance at lower cost", ugyanaz az ár mint a Sonnet-é.
-    {"name": "gpt-6.1-sol", "provider": "openai", "model": "gpt-6.1-sol", "price": (2.00, 10.00),
-     "extra": {"reasoning_effort": "low"}},
-    # Plafon: a legerősebb OpenAI modell, 5x ár. Csak a minőség felső korlátjának felméréséhez.
-    {"name": "gpt-6-astra", "provider": "openai", "model": "gpt-6-astra", "price": (10.00, 50.00),
-     "extra": {"reasoning_effort": "low"}, "optional": True},
-    # --- Google ---
-    # Olcsó, gyors Flash-Lite. A gondolkodás nem kapcsolható ki, a legalacsonyabb szint a "minimal".
-    {"name": "gemini-3.5-flash-lite", "provider": "google", "model": "gemini-3.5-flash-lite",
-     "price": (0.30, 2.50), "extra": {"thinking_level": "minimal"}},
-    # Haiku/Sonnet közötti: a "legintelligensebb Flash". Ár: $0.75/$3.75 2026.12.31-ig, utána $1.50/$7.50 (ez van itt).
-    {"name": "gemini-3.8-flash", "provider": "google", "model": "gemini-3.8-flash", "price": (1.50, 7.50),
-     "extra": {"thinking_level": "low"}},
-    # Sonnet-osztály / zászlóshajó. Ár: $2/$10 2026.11.30-ig, utána $4/$20 (ez van itt).
-    {"name": "gemini-4-argon", "provider": "google", "model": "gemini-4-argon", "price": (4.00, 20.00),
-     "extra": {"thinking_level": "low"}},
-    # Példa OpenAI-kompatibilis szolgáltatóra (OpenRouter, DeepSeek, Together, Groq, Mistral...):
-    # {"name": "kimi", "provider": "openai_compat", "model": "moonshotai/kimi-k3.1-pro",
-    #  "base_url": "https://openrouter.ai/api/v1", "key_env": "OPENROUTER_API_KEY", "price": [2.0, 10.0]},
-]
-
-
-# ---------- szolgáltató-adapterek ----------
-
-class Result:
-    def __init__(self, text, tin, tout, truncated, secs, error=None):
-        self.text, self.tin, self.tout, self.truncated, self.secs, self.error = text, tin, tout, truncated, secs, error
-
-
-_clients = {}
-
-
-def _client(spec):
-    key = (spec["provider"], spec.get("base_url"), spec.get("key_env"))
-    if key in _clients:
-        return _clients[key]
-    prov = spec["provider"]
-    if prov == "anthropic":
-        import anthropic
-        c = anthropic.AsyncAnthropic(max_retries=5)
-    elif prov in ("openai", "openai_compat"):
-        import openai
-        env = spec.get("key_env")
-        c = openai.AsyncOpenAI(api_key=os.environ.get(env) if env else None,
-                               base_url=spec.get("base_url"), max_retries=5)
-    elif prov == "google":
-        from google import genai
-        c = genai.Client(api_key=os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY"))
-    else:
-        raise ValueError(f"ismeretlen provider: {prov}")
-    _clients[key] = c
-    return c
-
-
-async def complete(spec, system, user, max_tokens) -> Result:
-    """Egyetlen hívás, JSON-t várva. Hibát nem dob: Result.error-ban adja vissza."""
-    c, prov, extra = _client(spec), spec["provider"], spec.get("extra", {})
-    t0 = time.time()
-    try:
-        if prov == "anthropic":
-            r = await c.messages.create(model=spec["model"], max_tokens=max_tokens, system=system,
-                                        messages=[{"role": "user", "content": user}], **extra)
-            text = "".join(b.text for b in r.content if b.type == "text")
-            return Result(text, r.usage.input_tokens, r.usage.output_tokens,
-                          r.stop_reason == "max_tokens", time.time() - t0)
-        if prov in ("openai", "openai_compat"):
-            kw = dict(extra)
-            kw["max_completion_tokens" if prov == "openai" else "max_tokens"] = max_tokens
-            if prov == "openai":
-                kw.setdefault("response_format", {"type": "json_object"})
-            r = await c.chat.completions.create(
-                model=spec["model"], messages=[{"role": "system", "content": system},
-                                               {"role": "user", "content": user}], **kw)
-            ch = r.choices[0]
-            return Result(ch.message.content or "", r.usage.prompt_tokens, r.usage.completion_tokens,
-                          ch.finish_reason == "length", time.time() - t0)
-        if prov == "google":
-            from google.genai import types
-            kw = {}
-            if "thinking_level" in extra:  # a Gemini 3.x/4 modelleknél a thinking_budget helyett ez él
-                kw["thinking_config"] = types.ThinkingConfig(thinking_level=extra["thinking_level"].upper())
-            cfg = types.GenerateContentConfig(system_instruction=system, max_output_tokens=max_tokens,
-                                              response_mime_type="application/json", **kw)
-            r = await c.aio.models.generate_content(model=spec["model"], contents=user, config=cfg)
-            u = r.usage_metadata
-            tout = (u.candidates_token_count or 0) + (getattr(u, "thoughts_token_count", 0) or 0)
-            fin = str(r.candidates[0].finish_reason) if r.candidates else ""
-            return Result(r.text or "", u.prompt_token_count or 0, tout, "MAX_TOKENS" in fin, time.time() - t0)
-    except Exception as e:  # noqa: BLE001 - a benchmark nem állhat le egy hibán
-        return Result("", 0, 0, False, time.time() - t0, error=f"{type(e).__name__}: {str(e)[:200]}")
-    raise ValueError(prov)
-
-
-def cost(spec, tin, tout):
-    p = spec.get("price")
-    return None if not p else tin / 1e6 * p[0] + tout / 1e6 * p[1]
+VERSE = None  # a main_async állítja be (sefaria.Verse)
 
 
 # ---------- minta ----------
@@ -186,7 +81,7 @@ def prompt_hash(*parts):
 async def run_extract(spec, sample, a, root):
     sem = asyncio.Semaphore(a.concurrency)
     d = root / spec["name"] / "extract"
-    ph = prompt_hash(P.EXTRACT_SYSTEM, spec["model"], json.dumps(spec.get("extra", {}), sort_keys=True))
+    ph = prompt_hash(P.extract_system(VERSE), spec["model"], json.dumps(spec.get("extra", {}), sort_keys=True))
 
     async def one(c):
         f = d / f"{P.slug(c['name'])}.json"
@@ -194,7 +89,7 @@ async def run_extract(spec, sample, a, root):
         if rec and rec.get("ph") == ph and rec.get("text_hash") == prompt_hash(c["text"]):
             return c, rec
         async with sem:
-            r = await complete(spec, P.EXTRACT_SYSTEM, f"Commentator: {c['name']}\n\n{c['text']}",
+            r = await complete(spec, P.extract_system(VERSE), f"Commentator: {c['name']}\n\n{c['text']}",
                                a.extract_max_tokens)
         rec = {"ph": ph, "text_hash": prompt_hash(c["text"]), "raw": r.text, "tin": r.tin, "tout": r.tout,
                "truncated": r.truncated, "secs": r.secs, "error": r.error}
@@ -236,7 +131,7 @@ def analyse_extract(spec, done, sample):
                 lost_chars += len(raw) - len(san)
                 name_fixed += P.normalize_hu(raw) != san
         extracted.append((c["name"], {"items": items, "pointers": data.get("pointers", []) or []}))
-    kept, pointers, st = P.build_items(extracted, sample)
+    kept, pointers, st = P.build_items(extracted, sample, VERSE.segments)
     n = len(sample)
     cst = cost(spec, tin, tout)
     return {
@@ -296,30 +191,36 @@ async def run_judge(judge_spec, spec, sample, items, a, root):
     for x in items:
         by_comm.setdefault(x["commentator"], []).append(x)
 
+    tok = [0, 0]  # a bíró összes tokenje (gyorsítótárazottal együtt)
+
     async def one(c):
         f = d / f"{P.slug(c['name'])}.json"
         its = by_comm.get(c["name"], [])
         key = prompt_hash(JUDGE_SYSTEM, json.dumps(its, ensure_ascii=False))
         rec = cached(f, a.force)
         if rec and rec.get("key") == key:
+            tok[0] += rec.get("tin", 0)
+            tok[1] += rec.get("tout", 0)
             return rec["scores"]
         listing = "\n".join(f"- [{x['anchor']}|{'explicit' if x['explicit'] else 'implicit'}] {x['question']} => "
                             f"{x['answer']} (quote: {x['quote']})" for x in its) or "(no items)"
         async with sem:
             r = await complete(judge_spec, JUDGE_SYSTEM, f"SOURCE ({c['name']}):\n{c['text']}\n\nITEMS:\n{listing}", 1000)
+        tok[0] += r.tin
+        tok[1] += r.tout
         try:
             s = P.parse_json(r.text)
             scores = {k: float(s[k]) for k in ("fidelity", "coverage", "anchor", "hungarian", "hallucinated")}
         except Exception:  # noqa: BLE001
             return None
-        store(f, {"key": key, "scores": scores})
+        store(f, {"key": key, "scores": scores, "tin": r.tin, "tout": r.tout})
         return scores
 
     res = [s for s in await asyncio.gather(*(one(c) for c in sample)) if s]
-    if not res:
-        return None
-    out = {k: statistics.mean(s[k] for s in res) for k in res[0]}
-    out["judged"] = len(res)
+    out = {"tin": tok[0], "tout": tok[1]}
+    if res:
+        out.update({k: statistics.mean(s[k] for s in res) for k in res[0]})
+        out["judged"] = len(res)
     return out
 
 
@@ -349,7 +250,7 @@ def pair_f1(cand, ref):
 async def run_merge(spec, groups, a, root):
     sem = asyncio.Semaphore(a.concurrency)
     d = root / spec["name"] / "merge"
-    ph = prompt_hash(P.MERGE_SYSTEM, spec["model"], json.dumps(spec.get("extra", {}), sort_keys=True))
+    ph = prompt_hash(P.merge_system(VERSE), spec["model"], json.dumps(spec.get("extra", {}), sort_keys=True))
 
     async def one(key, gitems):
         f = d / f"{key}.json"
@@ -358,9 +259,9 @@ async def run_merge(spec, groups, a, root):
         if rec and rec.get("ph") == ph and rec.get("gh") == gh:
             return key, rec
         desc = ("questions about the wider context/theme, not tied to one specific phrase" if key == "CTX"
-                else f"questions tied to the phrase {P.SEGMENTS[key]}")
+                else f"questions tied to the phrase {VERSE.segments[key]}")
         async with sem:
-            r = await complete(spec, P.MERGE_SYSTEM.replace("{group_desc}", desc), merge_lines(gitems),
+            r = await complete(spec, P.merge_system(VERSE).replace("{group_desc}", desc), merge_lines(gitems),
                                a.merge_max_tokens)
         rec = {"ph": ph, "gh": gh, "raw": r.text, "tin": r.tin, "tout": r.tout, "secs": r.secs,
                "truncated": r.truncated, "error": r.error}
@@ -438,7 +339,47 @@ def table(headers, rows):
     return "\n".join(out)
 
 
-def report(specs, ex, mg, judges, n_sample, n_total, ref_name):
+def cost_section(specs, ex, mg, judges, judge_spec):
+    """Teljes költség: (a) a riport adataiban lévő összes hívás (gyorsítótárazott is), (b) ebben a futásban kifizetett."""
+    def add(a, b):
+        return None if a is None or b is None else a + b
+
+    by_name = {s["name"]: s for s in specs}
+    if judge_spec:
+        by_name.setdefault(judge_spec["name"], judge_spec)
+    rows, total = [], 0.0
+    unknown = False
+    for s in specs:
+        n = s["name"]
+        j = judges.get(n) if judges else None
+        jc = cost(judge_spec, j["tin"], j["tout"]) if (j and judge_spec) else 0.0
+        parts = [ex[n]["cost"], mg[n]["cost"] if n in mg else 0.0, jc]
+        t = add(add(parts[0], parts[1]), parts[2])
+        unknown |= t is None
+        total += t or 0.0
+        rows.append([n, *(fmt(p, "usd") for p in parts), fmt(t, "usd")])
+    L = ["", "## Költség", "",
+         "### A riport adatainak teljes költsége (az előző futásokból gyorsítótárazott hívásokkal együtt)", "",
+         table(["modell", "kinyerés", "összevonás", "bíráló", "összesen"], rows),
+         "", f"**Összesen: {fmt(total, 'usd')}**" + (" (hiányos: néhány modell ára ismeretlen)" if unknown else "")]
+    fr, fresh_total, fresh_unknown = [], 0.0, False
+    for n, (tin, tout, calls) in sorted(FRESH.items()):
+        c = cost(by_name[n], tin, tout) if n in by_name else None
+        fresh_unknown |= c is None
+        fresh_total += c or 0.0
+        fr.append([n, str(calls), str(tin), str(tout), fmt(c, "usd")])
+    L += ["", "### Ebben a futásban ténylegesen kifizetett (új API-hívások, az újrapróbálkozással együtt)", ""]
+    if fr:
+        L += [table(["modell", "hívás", "bemeneti token", "kimeneti token", "költség"], fr), "",
+              f"**Összesen: {fmt(fresh_total, 'usd')}**" + (" (hiányos: ismeretlen ár)" if fresh_unknown else "")]
+    else:
+        L += ["Nem volt új API-hívás, minden a gyorsítótárból jött: $0.0000"]
+    L += ["", "A számok becslések a megadott listaárakból (`price`). A gondolkodó (reasoning) tokenek a kimenetben szerepelnek. "
+              "A batch-kedvezményt és a gyorsítótárazott bemeneti árat nem veszik figyelembe."]
+    return L
+
+
+def report(specs, ex, mg, judges, n_sample, n_total, ref_name, judge_spec=None):
     L = [f"# Benchmark ({n_sample}/{n_total} magyarázó, referencia: {ref_name})", ""]
     L += ["## Kinyerés", ""]
     rows = []
@@ -457,7 +398,7 @@ def report(specs, ex, mg, judges, n_sample, n_total, ref_name):
     L.append(table(["modell", "lefedettség", "pontosság", "horgony-egyezés"], rows))
     if judges:
         L += ["", "## LLM-bíró (1-5, vak; a bíró saját családját előnyben részesítheti!)", ""]
-        rows = [[s["name"], *(fmt(judges[s["name"]][k]) if judges.get(s["name"]) else "n/a"
+        rows = [[s["name"], *(fmt(judges[s["name"]][k]) if judges.get(s["name"]) and "fidelity" in judges[s["name"]] else "n/a"
                               for k in ("fidelity", "coverage", "anchor", "hungarian", "hallucinated")),
                  ] for s in specs]
         L.append(table(["modell", "hűség", "lefedettség", "horgony", "magyar", "kitalált tétel"], rows))
@@ -471,6 +412,7 @@ def report(specs, ex, mg, judges, n_sample, n_total, ref_name):
                          fmt(m["pair_f1"])])
         L.append(table(["modell", "p50", "költség", "hibás JSON/csoport", "kihagyott id", "duplikált id",
                         "klaszter/tétel", "max klaszter", "páros F1 a ref.-hez"], rows))
+    L += cost_section(specs, ex, mg, judges, judge_spec)
     L += ["", "Megjegyzés: a referencia nem 'igazság', csak viszonyítási pont. A végső ítélethez nézz bele néhány "
               "kimenetbe is (out/bench/<modell>/extract/*.json), főleg a nem igazolt idézeteket."]
     return "\n".join(L) + "\n"
@@ -497,8 +439,11 @@ async def main_async(a):
         return
     if not models:
         sys.exit("Nincs kiválasztott modell.")
-    root = Path(a.out) / "bench"
-    commentators = clean_links(a.links_json, a.lang, a.keep_nikud)
+    global VERSE
+    VERSE, links, vdir = sefaria.prepare(a)
+    root = vdir / "bench"
+    commentators = clean_links(links, a.lang, a.keep_nikud, anchor=VERSE.ref)
+    print(f"Vers: {VERSE.ref}")
     sample = stratified_sample(commentators, a.sample, a.seed)
     print(f"Minta: {len(sample)}/{len(commentators)} magyarázó, {sum(c['chars'] for c in sample)} karakter")
     by_name = {m["name"]: m for m in models}
@@ -526,7 +471,7 @@ async def main_async(a):
     mg = {}
     if not a.skip_merge:
         print("3/3 Összevonás a referencia-tételeken")
-        groups = OrderedDict((k, [x for x in ref_items if x["anchor"] == k]) for k in ["CTX", *P.SEGMENTS])
+        groups = OrderedDict((k, [x for x in ref_items if x["anchor"] == k]) for k in ["CTX", *VERSE.segments])
         groups = OrderedDict(sorted(((k, g) for k, g in groups.items() if len(g) >= 4),
                                     key=lambda kv: -len(kv[1]))[:a.merge_groups])
         if not groups:
@@ -540,7 +485,7 @@ async def main_async(a):
             for m, d in zip(models, mraw):
                 mg[m["name"]] = analyse_merge(m, d, groups, ref_cl)
 
-    md = report(models, ex, mg, judges, len(sample), len(commentators), ref_name)
+    md = report(models, ex, mg, judges, len(sample), len(commentators), ref_name, judge_spec)
     root.mkdir(parents=True, exist_ok=True)
     (root / "report.md").write_text(md, encoding="utf-8")
     print("\n" + md)
@@ -549,10 +494,7 @@ async def main_async(a):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("links_json")
-    ap.add_argument("--out", default="out")
-    ap.add_argument("--lang", default="auto", choices=["auto", "he", "en"])
-    ap.add_argument("--keep-nikud", action="store_true")
+    sefaria.add_args(ap)
     ap.add_argument("--models", help="JSON fájl a modellek listájával (lásd DEFAULT_MODELS)")
     ap.add_argument("--only", help="vesszővel elválasztott modellnevek")
     ap.add_argument("--reference", default="sonnet", help="referencia-modell neve (viszonyítási pont)")

@@ -2,13 +2,13 @@
 
 ## Cél
 
-Egy olyan eszköz, ami egy Tórá-pászukhoz tartozó klasszikus kommentárokat **a kérdések szerint** rendszerezi MI segítségével. Egyelőre egyetlen pászukra készült: **Bereshit (Genesis) 17:17**.
+Egy olyan eszköz, ami egy Tórá-pászukhoz tartozó klasszikus kommentárokat **a kérdések szerint** rendszerezi MI segítségével. A Tóra öt könyvének bármelyik versére működik (pl. `"Genesis 17:17"`, `"Exodus 3:14"`, `"Deuteronomy 6:4"`): a héber verset és a kommentárokat a Sefariáról tölti le.
 
 > וַיִּפֹּל אַבְרָהָם עַל־פָּנָיו וַיִּצְחָק וַיֹּאמֶר בְּלִבּוֹ הַלְּבֶן מֵאָה־שָׁנָה יִוָּלֵד וְאִם־שָׂרָה הֲבַת־תִּשְׁעִים שָׁנָה תֵּלֵד
 
 ### Eredeti kérés
 
-A cél: minden pászukhoz a kérdések szerint rendszerezni AI-val a kommentárokat. Egyelőre erre a konkrét pászukra:
+A cél: minden pászukhoz a kérdések szerint rendszerezni AI-val a kommentárokat. Az eredeti kérés az első vizsgált pászukra (Genesis 17:17) szólt:
 
 - Végig kell menni az összes kommentár kérdésein, és csoportosítva leírni őket aszerint, hogy a pászuk melyik szavaihoz tartoznak.
 - Külön csoportba kerülnek azok a kérdések, amik nem konkrét szavakhoz tartoznak (nem a nyelvezetre kérdeznek, hanem a kontextus szerinti témára): *dibur hámátchil*-hoz nem köthető kérdések.
@@ -32,17 +32,18 @@ A kimenet egy beágyazott (nested) lista:
         - ...
 ```
 
-A teljes kimenet: `out/result.md` és `out/result.json`.
+A teljes kimenet futásonként: `out/<Könyv.fej.vers>/result-<tag>.md` és `.json` (a `<tag>` alapból a modell neve), pl. `out/Genesis.17.17/result-openai-luna.md`. Az összehasonlítóhoz lásd a `viewer.py`-t.
 
 ## Hogyan működik
 
 ```
-links.json ──clean.py──▶ tisztított szövegek ──kinyerés (MI)──▶ kérdések
-          ──ellenőrzés/szűrés──▶ összevonás horgonyonként (MI) ──▶ nested lista
+vers ──sefaria.py: letöltés + szegmentálás──▶ héber vers, szegmensek, kommentárok
+     ──clean.py──▶ tisztított szövegek ──kinyerés (MI)──▶ kérdések
+     ──ellenőrzés/szűrés──▶ összevonás horgonyonként (MI) ──▶ nested lista
 ```
 
 1. **Tisztítás** (modell nélkül): a Sefaria-válaszból eltávolítja a HTML-t, a lábjegyzeteket és (alapból) a nikudot. Magyarázónként egy nyelvet tart meg.
-2. **Kinyerés** (olcsóbb modell): magyarázónként egy hívás. Listázza, hogy a magyarázó milyen kérdésekre válaszol (explicit és implicit), kiválasztja a horgonyt (`S1..S6` a pászuk szegmensei, vagy `CTX`), és szó szerinti idézetet ad.
+2. **Kinyerés** (olcsóbb modell): magyarázónként egy hívás. Listázza, hogy a magyarázó milyen kérdésekre válaszol (explicit és implicit), kiválasztja a horgonyt (`S1..Sn` a vers szegmensei, vagy `CTX`), és szó szerinti idézetet ad.
 3. **Ellenőrzés:** az idézetet visszakeresi a magyarázó szövegében (a ⚠ jelöli az igazolatlant), kiszűri az ismétlődést, és egységesíti a neveket (`NAME_FIXES`).
 4. **Összevonás** (erősebb modell): horgonyonként párhuzamosan, az azonos kérdést feltevő sorokat egy klaszterbe vonja.
 5. **Megjelenítés:** a nested lista Markdown és JSON formában.
@@ -53,19 +54,21 @@ Az előzetes eredmény a hűségre épül: a modell csak azt jelentheti, amit a 
 
 | Fájl | Szerep |
 |---|---|
+| [sefaria.py](sefaria.py) | Hivatkozás értelmezése, a héber vers és a kommentárok letöltése (gyorsítótárral), a vers szegmentálása. |
+| `segments/` | Opcionális kézi szegmentálás versenként (`segments/Genesis.17.17.txt`, soronként egy szegmens). |
 | [clean.py](clean.py) | Az 1. lépés: a Sefaria `links` kimenetének tisztítása. Önállóan is futtatható. |
 | [pipeline.py](pipeline.py) | A teljes folyamat (kinyerés, ellenőrzés, összevonás, kimenet). A promptok itt vannak. |
 | [benchmark.py](benchmark.py) | Különböző MI-modellek/szolgáltatók összemérése ugyanazzal a prompttal. |
-| [env.py](env.py) | Minimális `.env` betöltő (a `pipeline.py` használja). |
+| [llm.py](llm.py) | Közös modellregiszter és hívó réteg (Anthropic, OpenAI, Google), árak, költségszámítás. |
+| [viewer.py](viewer.py) | Az `out/<vers>/result-*.json` fájlokból versenként önálló `compare.html`-t készít (modellválasztó, kibontható listák, költségek, végösszeg). |
+| [env.py](env.py) | Minimális `.env` betöltő. |
 | `.env.example` | Sablon az API-kulcsokhoz. A saját `.env` gitignore-olt. |
-| [links.json](links.json) | Bemenet: a Sefaria `/api/links/Genesis.17.17?with_text=1` válasza. |
-| `out/` | Kimenet és gyorsítótár (`cleaned.json`, `items.json`, `clusters.json`, `result.*`, `extract/`, `bench/`). |
+| `out/<Könyv.fej.vers>/` | Versenként: `verse.json`, `links.json` (letöltés-gyorsítótár), `result-<tag>.md/.json`, `<tag>/` köztes fájlok, `compare.html`, `bench/`. |
 
 ## Telepítés
 
 ```
-pip install anthropic            # a pipeline-hoz
-pip install openai google-genai  # csak a benchmarkhoz
+pip install -r requirements.txt
 ```
 
 ## API-kulcsok
@@ -81,7 +84,7 @@ GEMINI_API_KEY=...
 ```
 
 - A `pipeline.py` és a `benchmark.py` automatikusan betölti ([env.py](env.py), külső csomag nélkül).
-- A pipeline-hoz csak az `ANTHROPIC_API_KEY` kell. A benchmarkhoz az `OPENAI_API_KEY` és a `GEMINI_API_KEY` (vagy `GOOGLE_API_KEY`) is, de csak azokhoz a cégekhez, amiknek a modelljeit futtatod (`--only`).
+- Csak azoknak a cégeknek a kulcsa kell, amiknek a modelljeit éppen használod (pipeline: `--extract-model`/`--merge-model`; benchmark: `--only`).
 - Egy már beállított környezeti változó (`export ...`) elsőbbséget élvez a `.env`-vel szemben.
 - Ha git-be került már kulcs, forgasd el (rotáld) a szolgáltatónál.
 
@@ -90,38 +93,52 @@ GEMINI_API_KEY=...
 ### clean.py
 
 ```
-python clean.py links.json --out cleaned.json [--lang auto|he|en] [--keep-nikud]
+python clean.py links.json --out cleaned.json [--lang auto|he|en] [--keep-nikud] [--anchor "Genesis 17:17"]
 ```
 
 ### pipeline.py
 
 ```
-python pipeline.py links.json --dry-run   # csak tisztít, nem hív API-t
-python pipeline.py links.json             # teljes futás
+python pipeline.py "Genesis 17:17" --dry-run   # letölt + tisztít, nem hív modellt
+python pipeline.py "Exodus 3:14"               # alap: OpenAI gpt-6-luna kinyerésre és összevonásra (kell: OPENAI_API_KEY)
+python pipeline.py "Deuteronomy 6:4" --extract-model haiku --merge-model haiku --tag anthropic-haiku   # Anthropic alternatíva
+python pipeline.py "Genesis 17:17" --extract-model haiku --merge-model sonnet --tag anthropic-haiku-sonnet   # a régi, drágább felállás
+python viewer.py "Genesis 17:17"               # out/Genesis.17.17/compare.html (hivatkozás nélkül: minden versre)
 ```
+
+A modellnevek az [llm.py](llm.py) `MODELS` regiszteréből valók (`python benchmark.py "Genesis 17:17" --list`). A futás a `result-<tag>.json` `meta` mezőjébe menti a költséget, tokent és időt, amit a `viewer.py` kirajzol (a végösszeggel együtt).
 
 | Kapcsoló | Jelentés |
 |---|---|
-| `--out` | kimeneti mappa (alap: `out`) |
+| `ref` (első argumentum) | a vers: könyv (angolul vagy átírással: Genesis/Bereshit, Exodus/Shemot, Leviticus/Vayikra, Numbers/Bamidbar, Deuteronomy/Devarim), fejezet, vers. Egyetlen vers. |
+| `--out` | kimeneti alapmappa (alap: `out`); a vers az `out/<Könyv.fej.vers>/` alá kerül |
+| `--links-json` | helyi kommentár-JSON (Sefaria `/api/links` formátum) a letöltés helyett |
+| `--refresh` | a vers és a kommentárok újraletöltése (alapból a gyorsítótár van használatban) |
+| `--segments-file`, `--max-segments` | kézi szegmentálás fájlból, illetve az automatikus szegmentálás felső határa (alap: 8) |
 | `--lang`, `--keep-nikud` | mint a `clean.py`-nál |
-| `--extract-model`, `--merge-model` | a két lépés modellje (alap: `claude-haiku-5-5`, `claude-sonnet-5-5`) |
+| `--extract-model`, `--merge-model` | a két lépés modellje (alap: mindkettő `gpt-6-luna`) |
+| `--tag` | a futás neve, ez kerül a fájlnevekbe (alap: a modell neve) |
 | `--concurrency` | párhuzamos kinyerések száma (alap: 40) |
 | `--extract-max-tokens`, `--merge-max-tokens` | kimeneti tokenkeret |
 | `--force` | a gyorsítótárazott kinyerést is újrafuttatja |
 
-A kinyerés magyarázónként gyorsítótárazott (`out/extract/`). Újrafutás csak akkor hív API-t, ha a prompt, a modell vagy a szöveg változott. A futás végén kiírja az időt, a tokenszámot és a becsült költséget. A `PRICES` az árakat tartalmazza, ellenőrizd őket.
+A kinyerés magyarázónként gyorsítótárazott (`out/<tag>/extract/`). Újrafutás csak akkor hív API-t, ha a prompt, a modell vagy a szöveg változott. A futás végén kiírja az időt, a tokenszámot és a becsült költséget. Az árak az [llm.py](llm.py)-ban vannak, ellenőrizd őket.
 
-A nevek írásmódját a `NAMES_HINT` és a `NAME_FIXES` állítja be, a pászuk szegmensei a `SEGMENTS` szótárban vannak.
+A nevek írásmódját a `NAMES_HINT` és a `NAME_FIXES` állítja be.
+
+**Szegmentálás:** a verset a kantillációs jelek (taamim) erőssége szerint bontja szegmensekre (`S1..Sn`, legfeljebb 8, legalább 3, ha a vers megengedi), a gyengébb határokat összevonva. Ha ez nem jó, a `segments/<Könyv.fej.vers>.txt` fájlba soronként egy szegmenst írva kézzel felülírható (a szegmensek egymás után fűzve ki kell adják a verset). A Genesis 17:17-hez ilyen kézi felosztás van.
+
+**Megjegyzés:** a nevek egységesítése (`NAME_FIXES`) és a promptok a Teremtés könyvének szereplőire lettek finomhangolva; más könyveknél a magyar átírások nem biztos, hogy egységesek, ezeket a `NAMES_HINT`-ben/`NAME_FIXES`-ben lehet kiegészíteni.
 
 ### benchmark.py
 
 Összehasonlítja a modelleket a kinyerésen és az összevonáson, ugyanazzal a prompttal, a magyarázók egy rétegzett mintáján.
 
 ```
-python benchmark.py links.json --list
-python benchmark.py links.json --only haiku,gpt-6-luna,gemini-3.8-flash --sample 8     # olcsó próba
-python benchmark.py links.json --sample 25 --judge sonnet               # alapos mérés
-python benchmark.py links.json --models my_models.json                  # saját modelllista
+python benchmark.py "Genesis 17:17" --list
+python benchmark.py "Genesis 17:17" --only haiku,gpt-6-luna,gemini-3.8-flash --sample 8     # olcsó próba
+python benchmark.py "Genesis 17:17" --sample 25 --judge sonnet               # alapos mérés
+python benchmark.py "Genesis 17:17" --models my_models.json                  # saját modelllista
 ```
 
 | Kapcsoló | Jelentés |
@@ -135,15 +152,15 @@ python benchmark.py links.json --models my_models.json                  # saját
 | `--concurrency` | párhuzamos hívás modellenként (alap: 8) |
 | `--force` | a gyorsítótárat is újraírja |
 
-A riport: `out/bench/report.md`. Méri a késleltetést, a költséget (és a teljes anyagra becsült költséget), a JSON-hibákat, a nem igazolt idézetek arányát, az ismétlődést, az idegen írásjegyeket, a referenciával való egyezést, az összevonás minőségét és (opcionálisan) a bíró pontszámait.
+A riport: `out/<vers>/bench/report.md`. Méri a késleltetést, a költséget (és a teljes anyagra becsült költséget), a JSON-hibákat, a nem igazolt idézetek arányát, az ismétlődést, az idegen írásjegyeket, a referenciával való egyezést, az összevonás minőségét és (opcionálisan) a bíró pontszámait.
 
 **Fontos:**
 - A `DEFAULT_MODELS` a 2026. október 24-i hivatalos árlisták alapján készült. Haiku-osztály: `gpt-6-luna`, `gemini-3.5-flash-lite`, `gemini-3.8-flash`. Sonnet-osztály: `gpt-6.1-sol`, `gemini-4-argon`. Plafon (opcionális): `gpt-6-astra`.
 - A Gemini árak a promóciós időszak utáni (magasabb) listaárral szerepelnek (`gemini-4-argon`: 2026.12.1-től, `gemini-3.8-flash`: 2027.1.1-től), az OpenAI és Gemini batch kb. fele ennyi. Frissítsd a `price` mezőt, ha változik (`"price": [bemenet, kimenet]` USD / millió token).
 - A gondolkodás (reasoning) mindenhol alacsonyra van állítva (`reasoning_effort` / `thinking_level`), mert a tokenjei kimeneti áron számítanak. Érdemes egy magasabb szinttel is kipróbálni egy modellt `--models` JSON-nal.
 - Más szolgáltatót (OpenRouter, DeepSeek, Groq, Mistral stb.) az `openai_compat` providerrel veheted fel (`base_url`, `key_env`). Példa a fájlban kommentben van.
-- A referencia viszonyítási pont, nem igazság. A döntés előtt nézz bele néhány kimenetbe (`out/bench/<modell>/extract/*.json`), főleg a ⚠-os idézetekbe.
+- A referencia viszonyítási pont, nem igazság. A döntés előtt nézz bele néhány kimenetbe (`out/<vers>/bench/<modell>/extract/*.json`), főleg a ⚠-os idézetekbe.
 
 ## Bővítés más pászukra
 
-A pászuk szövege (`VERSE`), a szegmensek (`SEGMENTS`), a hivatkozási horgony (`clean_links`) és a nevek (`NAMES_HINT`, `NAME_FIXES`) most erre az egy pászukra vannak beállítva. Egy új pászukhoz ezeket kell cserélni a `pipeline.py`-ban, és új `links.json`-t kell letölteni a Sefariáról.
+Nem kell kézzel semmit cserélni: a vers, a szegmensek, a promptok és a kimeneti mappa a megadott hivatkozásból épülnek. Csak a Tóra öt könyve támogatott; más könyvekhez (Nevi'im, Ketuvim) a `sefaria.py` `BOOKS` listáját kell bővíteni.
