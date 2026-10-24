@@ -248,17 +248,36 @@ async def extract_all(spec, system, commentators, a, meter, workdir):
     return await asyncio.gather(*(one(c) for c in commentators))
 
 
+def source_ref(entries, quote):
+    """A magyarázó azon bejegyzésének Sefaria-hivatkozása, amelyből az idézet származik."""
+    if not entries:
+        return None
+    q = norm(quote)
+    qw = set(q.split())
+    best, score = entries[0]["ref"], -1
+    for e in entries:
+        t = norm(e["text"])
+        if q and q in t:
+            return e["ref"]
+        s = len(qw & set(t.split()))
+        if s > score:
+            best, score = e["ref"], s
+    return best
+
+
 def build_items(extracted, commentators, anchors):
     """Tisztítás, idézet-ellenőrzés, ismétlődések kiszűrése. `anchors`: az érvényes szegmenskulcsok.
     Visszaadja: (items, pointers, statisztika)."""
     texts = {c["name"]: norm(c["text"]) for c in commentators}
     words = {n: set(t.split()) for n, t in texts.items()}
+    entries = {c["name"]: c.get("entries", []) for c in commentators}
     items, pointers, i = [], [], 0
     for name, rec in extracted:
         for p in rec.get("pointers", []):
             p = normalize_hu(p)
             if p:
-                pointers.append({"commentator": name, "note": p})
+                pointers.append({"commentator": name, "note": p,
+                                 "ref": entries[name][0]["ref"] if entries[name] else None})
         for it in rec.get("items", []):
             q, ans = normalize_hu(it.get("question_hu", "")), normalize_hu(it.get("answer_hu", ""))
             if not q or not ans:
@@ -269,6 +288,7 @@ def build_items(extracted, commentators, anchors):
                           "anchor": it.get("anchor") if it.get("anchor") in anchors else "CTX",
                           "explicit": bool(it.get("explicit")), "target": it.get("target"),
                           "question": q, "answer": ans, "quote": quote,
+                          "ref": source_ref(entries[name], quote),
                           "verified": quote_ok(quote, texts[name], words[name])})
     kept, dups = [], 0
     for x in items:  # ugyanattól a magyarázótól közel azonos válasz = ismétlődés
@@ -334,7 +354,8 @@ def build_result(v, clusters, items, pointers):
                 "implicit": not any(by_id[i]["explicit"] for i in c["ids"]),
                 "n_commentators": len({by_id[i]["commentator"] for i in c["ids"]}),
                 "answers": [{"commentator": by_id[i]["commentator"], "answer": by_id[i]["answer"],
-                             "quote": by_id[i]["quote"], "verified": by_id[i]["verified"]} for i in c["ids"]],
+                             "quote": by_id[i]["quote"], "ref": by_id[i]["ref"],
+                             "verified": by_id[i]["verified"]} for i in c["ids"]],
             } for c in cl]})
     return out
 

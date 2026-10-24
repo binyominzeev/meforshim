@@ -60,10 +60,10 @@ Az előzetes eredmény a hűségre épül: a modell csak azt jelentheti, amit a 
 | [pipeline.py](pipeline.py) | A teljes folyamat (kinyerés, ellenőrzés, összevonás, kimenet). A promptok itt vannak. |
 | [benchmark.py](benchmark.py) | Különböző MI-modellek/szolgáltatók összemérése ugyanazzal a prompttal. |
 | [llm.py](llm.py) | Közös modellregiszter és hívó réteg (Anthropic, OpenAI, Google), árak, költségszámítás. |
-| [viewer.py](viewer.py) | Az `out/<vers>/result-*.json` fájlokból versenként önálló `compare.html`-t készít (modellválasztó, kibontható listák, költségek, végösszeg). |
+| [viewer.py](viewer.py) | Az `out/<vers>/result-*.json` legfrissebb fájljából versenként önálló `kerdes-terkep.html`-t készít (kibontható listák; a magyarázók neve új ablakban a Sefaria forrásszövegére linkel). |
 | [env.py](env.py) | Minimális `.env` betöltő. |
 | `.env.example` | Sablon az API-kulcsokhoz. A saját `.env` gitignore-olt. |
-| `out/<Könyv.fej.vers>/` | Versenként: `verse.json`, `links.json` (letöltés-gyorsítótár), `result-<tag>.md/.json`, `<tag>/` köztes fájlok, `compare.html`, `bench/`. |
+| `out/<Könyv.fej.vers>/` | Versenként: `verse.json`, `links.json` (letöltés-gyorsítótár), `result-<tag>.md/.json`, `<tag>/` köztes fájlok, `kerdes-terkep.html`, `bench/`. |
 
 ## Telepítés
 
@@ -103,7 +103,7 @@ python pipeline.py "Genesis 17:17" --dry-run   # letölt + tisztít, nem hív mo
 python pipeline.py "Exodus 3:14"               # alap: OpenAI gpt-6-luna kinyerésre és összevonásra (kell: OPENAI_API_KEY)
 python pipeline.py "Deuteronomy 6:4" --extract-model haiku --merge-model haiku --tag anthropic-haiku   # Anthropic alternatíva
 python pipeline.py "Genesis 17:17" --extract-model haiku --merge-model sonnet --tag anthropic-haiku-sonnet   # a régi, drágább felállás
-python viewer.py "Genesis 17:17"               # out/Genesis.17.17/compare.html (hivatkozás nélkül: minden versre)
+python viewer.py "Genesis 17:17"               # out/Genesis.17.17/kerdes-terkep.html (hivatkozás nélkül: minden versre)
 ```
 
 A modellnevek az [llm.py](llm.py) `MODELS` regiszteréből valók (`python benchmark.py "Genesis 17:17" --list`). A futás a `result-<tag>.json` `meta` mezőjébe menti a költséget, tokent és időt, amit a `viewer.py` kirajzol (a végösszeggel együtt).

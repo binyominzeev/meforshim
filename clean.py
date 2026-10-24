@@ -95,7 +95,8 @@ def clean_links(data, lang="auto", keep_nikud=False, anchor=None, category="Comm
         g["entries"].sort(key=lambda t: t[0])
         langs = sorted({t[2] for t in g["entries"]})
         body = "\n".join(f"[{ref}]\n{txt}" for _, ref, _, txt in g["entries"])
-        result.append({"name": name, "lang": "+".join(langs), "text": body, "chars": len(body)})
+        result.append({"name": name, "lang": "+".join(langs), "text": body, "chars": len(body),
+                       "entries": [{"ref": ref, "text": txt} for _, ref, _, txt in g["entries"]]})
     return result
 
 
