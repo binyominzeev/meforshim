@@ -1,0 +1,1289 @@
+[
+ {
+  "id": 1,
+  "commentator": "Ramban",
+  "anchor": "S2",
+  "explicit": false,
+  "target": null,
+  "question": "Mit jelent a \"ויצחק\" ige ebben a versben, vagyis Ábrahám nevetése gúnyt vagy örömet fejez-e ki?",
+  "answer": "Onkelosz szerint \"וחדי\" (örvendezett), mert a nevetés lehet öröm is, és Ábrahám öröme ebben a helyzetben a hit jele volt."
+ },
+ {
+  "id": 2,
+  "commentator": "Ramban",
+  "anchor": "S3",
+  "explicit": false,
+  "target": null,
+  "question": "Mit jelent, hogy Ábrahám \"a szívében\" (\"בלבו\") mondta, amit mond, és mire utal ez a belső gondolat?",
+  "answer": "A szívében mondottak azt jelentik, hogy Ábrahám örömében úgy gondolta: ez a csoda nevetésre méltó, mert nagyon csodálatos."
+ },
+ {
+  "id": 3,
+  "commentator": "Ramban",
+  "anchor": "S4",
+  "explicit": false,
+  "target": null,
+  "question": "Kérdő értelmű-e a \"הלבן מאה שנה יולד\" mondat, vagy kijelentés, illetve tagadás?",
+  "answer": "Ramban szerint kérdés, amely a csodálkozást fejezi ki, nem pedig a lehetetlenség tagadása, hasonlóan más bibliai kérdésekhez."
+ },
+ {
+  "id": 4,
+  "commentator": "Ramban",
+  "anchor": "S4",
+  "explicit": true,
+  "target": null,
+  "question": "Miért lenne csodálatos, ha egy száz éves férfi gyermeket nemz, hiszen a korabeli nemzedékekben száz és kilencven évesek is nemzettek gyermeket?",
+  "answer": "A csoda nem a férfi korában rejlik, hanem abban, hogy Ábrahám kilencvenkilenc éves kora után már felhagyott a nőkkel való kapcsolattal, így Sárától való gyermek most teljesen váratlan volt."
+ },
+ {
+  "id": 5,
+  "commentator": "Ramban",
+  "anchor": "S5",
+  "explicit": false,
+  "target": null,
+  "question": "Miért nem mondta Isten kezdetben, hogy a fiú Sárától születik, hanem csak később, a 16. versben?",
+  "answer": "Azért, mert Ábrahám úgy tudta, hogy már nem él nemi életet, így az Isten által előre nem jelzett Sárától való születés csak később vált világossá."
+ },
+ {
+  "id": 6,
+  "commentator": "Ramban",
+  "anchor": "S6",
+  "explicit": false,
+  "target": null,
+  "question": "Miért rövid és elliptikus a \"ואם שרה בת תשעים שנה תלד\" kérdés szerkezete, és mihez kapcsolódik grammatikailag?",
+  "answer": "A kérdés a \"ויצחק\" szóhoz kapcsolódik, a szöveg pedig a csodálkozás miatt rövidíti le a mondatot, mintegy tömören jelezve a kérdést."
+ },
+ {
+  "id": 7,
+  "commentator": "Ramban",
+  "anchor": "CTX",
+  "explicit": false,
+  "target": null,
+  "question": "Ábrahám nevetése kétkedés vagy hit jele volt, és ez hogyan függ össze a fiú nevének, Izsáknak a magyarázatával?",
+  "answer": "A nevetés öröm és hit jele volt, ezért parancsolta Isten a fiú nevét \"Izsáknak\", a nevetésre utalva, amelyet Sára is később megemlít."
+ },
+ {
+  "id": 8,
+  "commentator": "Ibn Ezra",
+  "anchor": "S3",
+  "explicit": true,
+  "target": null,
+  "question": "Hogyan lehetséges, hogy a százéves Ábrahámtól gyermek születik, hiszen az öreg férfi magja hideg, nem képes termékenyülni?",
+  "answer": "Ibn Ezra szerint az öreg férfi magja hideg, ezért nem tud nemzeni, Ábrahám ezen csodálkozik."
+ },
+ {
+  "id": 9,
+  "commentator": "Ibn Ezra",
+  "anchor": "S6",
+  "explicit": true,
+  "target": null,
+  "question": "Hogyan szülhet a kilencvenéves Sára, akinek vére már elállt?",
+  "answer": "Ibn Ezra szerint ez a legnagyobb csoda, mert a fogantatáshoz szükséges vér, amelyből a magzat épül, Sáránál már hiányzik."
+ },
+ {
+  "id": 10,
+  "commentator": "Ibn Ezra",
+  "anchor": "S5",
+  "explicit": false,
+  "target": null,
+  "question": "Miért nagyobb csoda Sára fogantatása, mint Ábrahámé, az ige szerint, amelyben Ábrahám szívében kételkedik?",
+  "answer": "Ibn Ezra szerint Sára esete nagyobb csoda, mert nála a vérzés már megszűnt, míg Ábrahám esetében csak az öreg mag hidegségéről van szó."
+ },
+ {
+  "id": 11,
+  "commentator": "Ibn Ezra",
+  "anchor": "S4",
+  "explicit": false,
+  "target": null,
+  "question": "Elképzelhető-e, hogy egy száz éves férfi gyermeket nemzzen, tekintettel a korabeli emberek életkorára?",
+  "answer": "Ibn Ezra szerint a korábbi pátriárkák mindegyike kilencven év felett nemzett fiút, és a korabeli emberek élete sokkal hosszabb volt, így ez nem példátlan."
+ },
+ {
+  "id": 12,
+  "commentator": "Sforno",
+  "anchor": "S4",
+  "explicit": false,
+  "target": null,
+  "question": "Hogyan lehetséges, hogy egy száz éves férfi gyermeket nemzzen (הַלְּבֶן מֵאָה שָׁנָה יִוָּלֵד)?",
+  "answer": "A nő még fiatal férfi közösülésekor is fogan az életkor után, de egy öreg férfitól nem, tehát a száz éves apaság a természetes rend szerint lehetetlen."
+ },
+ {
+  "id": 13,
+  "commentator": "Sforno",
+  "anchor": "S6",
+  "explicit": true,
+  "target": null,
+  "question": "Hogyan szülhet egy kilencven éves asszony (הֲבַת־תִּשְׁעִים שָׁנָה תֵּלֵד)?",
+  "answer": "Kilencven évesen egyetlen férfi közösülésétől sem fogan meg a nő, még fiatal férfitól sem, tehát a fogantatás természetes úton lehetetlen."
+ },
+ {
+  "id": 14,
+  "commentator": "Radak",
+  "anchor": "S1",
+  "explicit": false,
+  "target": null,
+  "question": "Miért borul Ábrahám arcra a főldre, amikor ezt a kijelentést hallja?",
+  "answer": "Hálaadás és leborulás ez az Isten ígérete miatt, ahogy korábban már kifejtette."
+ },
+ {
+  "id": 15,
+  "commentator": "Radak",
+  "anchor": "S2",
+  "explicit": false,
+  "target": null,
+  "question": "Gúnyos nevetést vagy örömet fejez ki a וַיִּצְחָק ige Ábrahám esetében?",
+  "answer": "Öröm volt a szívében (a Targum וחדי fordítása szerint), nem gúnyos nevetés."
+ },
+ {
+  "id": 16,
+  "commentator": "Radak",
+  "anchor": "S4",
+  "explicit": false,
+  "target": null,
+  "question": "Miért mondja Ábrahám, hogy száz évesen születik meg a gyermek, és mit jelent ez az időpont?",
+  "answer": "Ha most fogan a felesége, a gyermek születésekor Ábrahám száz éves lesz, mert kilencvenkilenc éves most."
+ },
+ {
+  "id": 17,
+  "commentator": "Radak",
+  "anchor": "S4",
+  "explicit": true,
+  "target": null,
+  "question": "Hogyan lehet összeegyeztetni Ábrahám csodálkozását a 'hitt az Úrban' (Ter 15:6) kijelentéssel?",
+  "answer": "A csodálkozás nem hitetlenség volt, hanem egy ember döbbenete, aki nagyra tartja, hogy Isten ilyet tesz vele, hiszen már korábban is hitt."
+ },
+ {
+  "id": 18,
+  "commentator": "Radak",
+  "anchor": "S5",
+  "explicit": false,
+  "target": null,
+  "question": "Miért említi külön Ábrahám Sárát, ha a csodálkozás már a férfi életkorára is vonatkozik?",
+  "answer": "Sára esete még csodálatosabb a világ szemében, mert kilencvenévesen szül, és természeténél fogva meddő volt."
+ },
+ {
+  "id": 19,
+  "commentator": "Radak",
+  "anchor": "S6",
+  "explicit": false,
+  "target": null,
+  "question": "Miért nevezi a szöveg Sárát kilencvenéves korában szülőnek, és mi ennek a jelentősége?",
+  "answer": "Kilencvenévesen, meddő természetével együtt, szülni példátlanul csodálatos dolog, ezért hangsúlyos."
+ },
+ {
+  "id": 20,
+  "commentator": "Haamek Davar",
+  "anchor": "S3",
+  "explicit": false,
+  "target": null,
+  "question": "Abrahám 'szívében' vajon kételkedett-e Isten hatalmában, amikor azt gondolta, hogy századik évében születik gyermeke?",
+  "answer": "Nem; Ábrahám nem Isten képességét, hanem az ígéret szavainak szándékát kérdőjelezte meg."
+ },
+ {
+  "id": 21,
+  "commentator": "Haamek Davar",
+  "anchor": "S4",
+  "explicit": false,
+  "target": null,
+  "question": "Miért mondja az ige a הַלְּבֶן מֵאָה־שָׁנָה יִוָּלֵד kifejezésben, hogy 'születik' (יִוָּלֵד), és mit jelent ez, ha Sárának nem kell szó szerint szülnie?",
+  "answer": "A szöveg 'נתתי ממנה' (adok tőle), nem pedig 'גם תלד' (ő is szül) kifejezést használ, ezért a gyermek Sárához más módon kapcsolódhat, például úgy, mint Noémi fia, és később Ábrahámnak adja."
+ },
+ {
+  "id": 22,
+  "commentator": "Shadal",
+  "anchor": "S2",
+  "explicit": false,
+  "target": null,
+  "question": "Miért nevet Ábrahám (וַיִּצְחָק), ha hisz az Örökkévalónak és az ígéretnek?",
+  "answer": "A nevetés akaratlan testi mozdulat, amely akkor jön, amikor az ember csodálatos jó hírt hall, még akkor is, ha hisz benne."
+ },
+ {
+  "id": 23,
+  "commentator": "Shadal",
+  "anchor": "S5",
+  "explicit": true,
+  "target": null,
+  "question": "Miért nincs befejezve a mondat az ואִם־שָׂרָה kifejezésnél, és miért nem szerepel benne az igei állítmány (a 'ואם שרה תלד' szerkezet szerint)?",
+  "answer": "Ábrahám félbehagyott, megtört beszédet mond, ezért a mondat nem fejeződik be."
+ },
+ {
+  "id": 24,
+  "commentator": "Shadal",
+  "anchor": "S5",
+  "explicit": true,
+  "target": null,
+  "question": "Miért áll a שָׂרָה szón a zaqef ékezet, és mit jelez ez a tagolásról a szöveg értelmezésében?",
+  "answer": "A zaqef jelzi, hogy a שרה szó után szünet van, tehát két külön mondatrész van, nem egyetlen egységes kijelentés; ha egy mondat volna, tevir állna."
+ },
+ {
+  "id": 25,
+  "commentator": "Shadal",
+  "anchor": "S6",
+  "explicit": true,
+  "target": null,
+  "question": "Hogyan értelmezhető a הֲבַת־תִּשְׁעִים שָׁנָה תֵּלֵד kérdés: valóban kétséget fejez-e ki, hogy a kilencven éves asszony szülhet-e?",
+  "answer": "Igen, ez Ábrahám kétkedő, retorikus kérdése (\"Vajon kilencven évesen szül-e?\"), amely a befejezetlen beszéd tartalmát adja."
+ },
+ {
+  "id": 26,
+  "commentator": "Tur HaAroch",
+  "anchor": "S2",
+  "explicit": false,
+  "target": null,
+  "question": "Mit jelent a \"וַיִּצְחָק\" ige ebben a versben: nevetést, gúnyolódást vagy örömet fejez-e ki Ábrahám reakciója?",
+  "answer": "Onkelosz a \"וחדי\" (örvendezett) szóval fordítja, így Ábrahám öröme egy csodálatos hír fölötti örömöt jelent, nem kinevetést."
+ },
+ {
+  "id": 27,
+  "commentator": "Tur HaAroch",
+  "anchor": "S4",
+  "explicit": true,
+  "target": null,
+  "question": "Miért nevezi Ábrahám csodának (\"הַלְּבֶן מֵאָה שָׁנָה יִוָּלֵד\") a száz évesen születő gyermeket, hiszen azokban a nemzedékekben ez nem volt különösebben csodálatos, és Ábrahám később Keturából sok gyermeket nemzett?",
+  "answer": "A csoda nem a száz éves kori születésben rejlik, hanem abban, hogy ettől a feleségtől, aki fiatalkorában nem fogant, most száz év után születik gyermek."
+ },
+ {
+  "id": 28,
+  "commentator": "Tur HaAroch",
+  "anchor": "S6",
+  "explicit": false,
+  "target": null,
+  "question": "Miért hangsúlyozza a szöveg Sára életkorát (\"הֲבַת תִּשְׁעִים שָׁנָה תֵּלֵד\"), azaz mi teszi csodálatossá a kilencven éves Sára szülését?",
+  "answer": "Kilencven év után megszűnt nála a női havi ciklus, így a fogantatás különösen csodás, és fiatalkorában sem fogant gyermeket."
+ },
+ {
+  "id": 29,
+  "commentator": "Minchat Shai",
+  "anchor": "S2",
+  "explicit": true,
+  "target": null,
+  "question": "Milyen a 'ויצחק' szó nikkudja: a חי\"ת alatt qamec áll-e, vagy a Masszora szerint patah-t kellene olvasni (a tizenkét 'nagy' helyet felsoroló jegyzet alapján)?",
+  "answer": "A חי\"ת alatti qamec a helyes; a jegyzet, amely ezt a szót a patah-os esetek közé sorolja, tévedés, mert a szó nincs a felsorolt helyek között."
+ },
+ {
+  "id": 30,
+  "commentator": "Minchat Shai",
+  "anchor": "S4",
+  "explicit": true,
+  "target": null,
+  "question": "Milyen a 'מאה שנה' szóközi hangsúlyozása (taʿam) és kötőjelezése: a 'מאה' az alef-en kapja-e a taʿamot, és van-e maqqef a két szó között?",
+  "answer": "Egyes kéziratokban a taʿam az alef-en áll, maqqef nélkül, Or HaTorah szerint pedig minden spanyol könyvben milra (utolsó szótagi hangsúly)."
+ },
+ {
+  "id": 31,
+  "commentator": "Mizrachi",
+  "anchor": "S2",
+  "explicit": true,
+  "target": null,
+  "question": "Miért nem rótta meg az Örökkévaló Ábrahámot nevetéséért, miközben Sárát megrótta a nevetéséért?",
+  "answer": "Ábrahám nevetése nem a hitetlenséget fejezte ki, hanem a csodának való örömteli elhitelezését, ezért nem volt rá szükség a megrovásra."
+ },
+ {
+  "id": 32,
+  "commentator": "Mizrachi",
+  "anchor": "S3",
+  "explicit": false,
+  "target": null,
+  "question": "Kifejezi-e Ábrahám csodálkozása (a lelkében mondott szavai) a hitetlenséget vagy a hit megerősítését?",
+  "answer": "Ábrahám csodálkozása megerősítő (mekajemes) jellegű, mert hitt abban, hogy száz éves ember is nemzhet, így nem tagadja a dolgot."
+ },
+ {
+  "id": 33,
+  "commentator": "Mizrachi",
+  "anchor": "S6",
+  "explicit": false,
+  "target": null,
+  "question": "Sára csodálkozása (a kilencven éves asszony szüléséről) hitetlenséget vagy a szülőképesség elfogadását fejezi-e ki?",
+  "answer": "Sára esetében a csodálkozás megerősítő: a 'ha Sára, a kilencven éves' kifejezés azt jelenti, hogy alkalmas volt a szülésre, így a dolog elfogadható."
+ },
+ {
+  "id": 34,
+  "commentator": "Mizrachi",
+  "anchor": "S4",
+  "explicit": true,
+  "target": "Rashi",
+  "question": "Megoldja-e a nehézséget az a magyarázat, hogy a korai nemzedékekben még ötszáz évesen is nemzettek, mert az évek száma csökkent Ábrahám idejére?",
+  "answer": "Nem oldja meg, mert a korábbi nemzedékek példája nem indokolja Ábrahám csodálkozásának elvetését, a nehézség továbbra is fennáll."
+ },
+ {
+  "id": 35,
+  "commentator": "Mizrachi",
+  "anchor": "S4",
+  "explicit": false,
+  "target": null,
+  "question": "Van-e bizonyíték arra, hogy egy száz éves férfi gyermeket nemzhet, a régi nemzedékek példáira hivatkozva?",
+  "answer": "A példák nem bizonyítanak, mert azok a nemzések életük végén történtek, és Ábrahám is csak száz éve után nemzett, így a csodálkozás jogos maradt."
+ },
+ {
+  "id": 36,
+  "commentator": "Rabbeinu Bahya",
+  "anchor": "S1",
+  "explicit": false,
+  "target": null,
+  "question": "Miért írja le a Tóra ismét, hogy Ábrahám arcra borult (\"וַיִּפֹּל אַבְרָהָם עַל־פָּנָיו\"), amikor ezt már korábban is megtette?",
+  "answer": "A korábbi nefilá a prófétai kinyilatkoztatás előkészítése volt, ez a mostani pedig Jišmáélért mondott könyörgés, tehát más célra szolgál."
+ },
+ {
+  "id": 37,
+  "commentator": "Rabbeinu Bahya",
+  "anchor": "S1",
+  "explicit": false,
+  "target": null,
+  "question": "Miért említi a Tóra minden alkalommal a nefilá (leborulás) kifejezést a prófétálással kapcsolatban?",
+  "answer": "A körülmetélés előtt a próféták csak leborulva prófétálhattak, mert a orlá (előbőr) utálatos Isten előtt; a körülmetélés után már állva prófétálhattak, ahogy Ábrahámról írják (18:22)."
+ },
+ {
+  "id": 38,
+  "commentator": "Rabbeinu Bahya",
+  "anchor": "S2",
+  "explicit": false,
+  "target": null,
+  "question": "Jelenti-e a \"וַיִּצְחָק\" kifejezés, hogy Ábrahám gúnyolódott vagy kinevette az ígéretet?",
+  "answer": "Nem gúnyolódás, hanem öröm kifejezése, mert Isten parancsolta a fiú nevének megadását \"Jichák\" (nevetés) alapján, és Onkelosz is \"ვ‑chadi\" (örült) fordítással adta vissza."
+ },
+ {
+  "id": 39,
+  "commentator": "Rabbeinu Bahya",
+  "anchor": "S3",
+  "explicit": false,
+  "target": null,
+  "question": "Azt jelzi-e Ábrahám \"בְּלִבּוֹ\" (szívében mondott) szavai, hogy kétkedett a csodában?",
+  "answer": "Nem; Ábrahám szívében a természet rendjét látta, de tudta és hitte, hogy Isten hatalma a csodát is megvalósíthatja."
+ },
+ {
+  "id": 40,
+  "commentator": "Rabbeinu Bahya",
+  "anchor": "S4",
+  "explicit": false,
+  "target": null,
+  "question": "Ábrahám szavai (\"הַלְּבֶן מֵאָה־שָׁנָה יִוָּלֵד\") azt fejezik-e ki, hogy elutasítja a csodát, mint nagy és rendkívüli eseményt?",
+  "answer": "Nem, az mondat csak a természetes rendről szól, és Ábrahám a csodát a Teremtő hatalmában hitte."
+ },
+ {
+  "id": 41,
+  "commentator": "Rabbeinu Bahya",
+  "anchor": "S6",
+  "explicit": false,
+  "target": null,
+  "question": "Hogyan lehetett Ábrahám hite összeegyeztethető azzal, hogy Sára kilencven évesen természetes úton már nem szülhetett (\"הֲבַת־תִּשְׁעִים שָׁנָה תֵּלֵד\")?",
+  "answer": "Ábrahám tudta, hogy természetes úton ez lehetetlen, de a csoda útján Isten hatalmával hitte, ahogy a Tóra mondja: \"és hitt az Örökkévalóban\"."
+ },
+ {
+  "id": 42,
+  "commentator": "Malbim",
+  "anchor": "S1",
+  "explicit": false,
+  "target": null,
+  "question": "Miért borul Ábrahám arcra, és miért nevet, ha a jó hírt kapja?",
+  "answer": "Nevetése és öröme ellenére a hír csodálkozást keltett benne, ezért esett le arcra és gondolkodott el rajta."
+ },
+ {
+  "id": 43,
+  "commentator": "Malbim",
+  "anchor": "S2",
+  "explicit": false,
+  "target": null,
+  "question": "Mit jelent Ábrahám nevetése (ויצחק) ebben a jelenetben?",
+  "answer": "A nevetés öröm volt, de a csodálkozással vegyesen, nem kétkedés."
+ },
+ {
+  "id": 44,
+  "commentator": "Malbim",
+  "anchor": "S3",
+  "explicit": false,
+  "target": null,
+  "question": "Mit jelent az, hogy Ábrahám „a szívében” mondja (ויאמר בלבו), és mi bennük a csodálkozás tartalma?",
+  "answer": "A „בלבו” belső gondolkodást, csodálkozást jelent, amelyben három különböző csodát fogalmaz meg."
+ },
+ {
+  "id": 45,
+  "commentator": "Malbim",
+  "anchor": "S4",
+  "explicit": false,
+  "target": null,
+  "question": "Lehetséges-e, hogy egy százéves férfinak gyermeke szülessen (הלבן מאה שנה יולד)?",
+  "answer": "Természetes rend szerint ez nem lehetséges, ezért a férfi részéről csoda volna, még ha a nő szülne is."
+ },
+ {
+  "id": 46,
+  "commentator": "Malbim",
+  "anchor": "S5",
+  "explicit": false,
+  "target": null,
+  "question": "Szülhet-e Sára gyermeket, miután meddő volt (ואם־שרה)?",
+  "answer": "Sára meddősége miatt második csodás nehézség, hogy most szülhet."
+ },
+ {
+  "id": 47,
+  "commentator": "Malbim",
+  "anchor": "S6",
+  "explicit": false,
+  "target": null,
+  "question": "Szülhet-e a kilencvenéves asszony (הבת תשעים שנה תלד), akkor is, ha nem volt meddő?",
+  "answer": "Ez a harmadik csoda: a kilencvenéves kor önmagában is természetellenes szüléshez vezetne, függetlenül a meddőségtől."
+ },
+ {
+  "id": 48,
+  "commentator": "Riva",
+  "anchor": "S2",
+  "explicit": false,
+  "target": null,
+  "question": "Mit jelent a וַיִּצְחָק ige itt: öröm vagy gúnyolódás?",
+  "answer": "Öröm (a תרגום אונקלוס szerint וחדי), vagyis Ábrahám örvendezett az ígéreten, nem gúnyolódott."
+ },
+ {
+  "id": 49,
+  "commentator": "Riva",
+  "anchor": "S5",
+  "explicit": false,
+  "target": null,
+  "question": "Miért nem hitte el Sára az ígéretet úgy, ahogy Ábrahám hitte el?",
+  "answer": "Mert Ábrahám Istentől, a הגבורה szájából hallotta az ígéretet, Sára ellenben egy emberi alakban megjelenő angyaltól."
+ },
+ {
+  "id": 50,
+  "commentator": "Siftei Chakhamim",
+  "anchor": "S4",
+  "explicit": true,
+  "target": null,
+  "question": "Nem a természet rendje ellen való-e, hogy egy száz éves férfinak gyermeke szülessen, és nem tagadja-e Ábrahám szavai ezt a csodát?",
+  "answer": "Isten hatalmában áll a természet ellenére is cselekedni, Ábrahám pedig nem tagadja a csodát, hanem Isten kegyelmét dicséri."
+ },
+ {
+  "id": 51,
+  "commentator": "Siftei Chakhamim",
+  "anchor": "S3",
+  "explicit": true,
+  "target": "Rashi",
+  "question": "Nem tagadásnak minősül-e Ábrahám gondolata (וַיֹּאמֶר בְּלִבּוֹ), ha úgy értelmezzük, hogy ez a kegyelem Isten korábbi tettei után jön?",
+  "answer": "Nem tagadás, mert Ábrahám csak azt mondja, hogy Isten ennél is nagyobb kegyet tesz vele, így ez Isten dicséretét szolgálja."
+ },
+ {
+  "id": 52,
+  "commentator": "Siftei Chakhamim",
+  "anchor": "S4",
+  "explicit": true,
+  "target": "Ra\"m",
+  "question": "Miért csodálkozik Ábrahám a száz éves férfi gyermekszülésén (הַלְּבֶן מֵאָה־שָׁנָה יִוָּלֵד), ha már Ábrahám korában megrövidültek az életévek?",
+  "answer": "A Ra\"m kérdése nem találja el a lényeget, mert a csoda nem az életkor puszta ténye, hanem az, hogy mindketten öregek, és az öregség gyengíti a természetet."
+ },
+ {
+  "id": 53,
+  "commentator": "Siftei Chakhamim",
+  "anchor": "S6",
+  "explicit": true,
+  "target": "Rashi",
+  "question": "Miért hivatkozik Rashi Noé példájára (az ötszáz év utáni nemzésre), és mi a különbség Noé és Ábrahám esete között?",
+  "answer": "Noé esetében a gyermekszülést csak a magzatképzés elzárása gátolta a kizárólagos rendeletből, utána pedig a természet szerint nemzett, ezért nem ellentmondás Rashi érvelésével."
+ },
+ {
+  "id": 54,
+  "commentator": "Siftei Chakhamim",
+  "anchor": "S5",
+  "explicit": false,
+  "target": null,
+  "question": "Miért tartja a szöveg döntőnek a Sára életkorát (הֲבַת־תִּשְׁעִים שָׁנָה תֵּלֵד), ha a csoda elsősorban Ábrahámé?",
+  "answer": "A csodálatos az, hogy mindketten, férfi és nő is megöregedtek, ami a természet szerint nem teszi lehetővé a gyermekszülést."
+ },
+ {
+  "id": 55,
+  "commentator": "Siftei Chakhamim",
+  "anchor": "S4",
+  "explicit": false,
+  "target": null,
+  "question": "Miért volt a korábbi nemzedékeknek könnyű hatvan-hetven évesen gyermeket nemzeniük, Ábrahámnak pedig száz évesen már csodának számít?",
+  "answer": "Eredetileg a természet még engedte a nemzést, később azonban az életkor rövidülésével és az öregséggel a természet gyengül, így az öregkori nemzés már csoda."
+ },
+ {
+  "id": 56,
+  "commentator": "Ralbag Beur HaMilot",
+  "anchor": "S4",
+  "explicit": true,
+  "target": null,
+  "question": "Kérdéses-e a הלבן מאה שנה יולד szóban a הה״א: kérdő (הה״א התימהון) vagy határozott névelő, azaz kijelentés-e a mondat?",
+  "answer": "A ה nem kérdő (התימהון) partikula, hanem valódi, határozott névelő, a mondat tehát kijelentés: a száz éves férfi fog nemzeni."
+ },
+ {
+  "id": 57,
+  "commentator": "Ralbag Beur HaMilot",
+  "anchor": "S5",
+  "explicit": false,
+  "target": null,
+  "question": "Hogyan értelmezendő a וְאִם־שָׂרָה kifejezés, és mi a kérdés Sára szülésével kapcsolatban?",
+  "answer": "A וְאִם a „hogyan” (איך) jelentésében áll, így a kérdés: hogyan lehetséges, hogy Sára szüljön."
+ },
+ {
+  "id": 58,
+  "commentator": "Ralbag Beur HaMilot",
+  "anchor": "S6",
+  "explicit": true,
+  "target": null,
+  "question": "Hogyan lehetséges, hogy a kilencvenéves Sára szüljön (הֲבַת־תִּשְׁעִים שָׁנָה תֵּלֵד), ami nyilvánvalóan páratlan csoda?",
+  "answer": "Abrahám később, Sára halála után (137 évesen) újra nősült és nemzett gyermeket, így egy öreg férfi nemzése nem idegen, és a Midrás is ezen az alapon értelmezi a verset."
+ },
+ {
+  "id": 59,
+  "commentator": "Tzror HaMor",
+  "anchor": "S1",
+  "explicit": false,
+  "target": null,
+  "question": "Miért fekszik Ábrahám arcra a földre, amikor meghallja az ígéretet?",
+  "answer": "A gezerah (végleges isteni határozat) itt pecsételődik meg, és Ábrahám úgy érzi, nem méltó ilyen jutalomra, ezért borul le."
+ },
+ {
+  "id": 60,
+  "commentator": "Tzror HaMor",
+  "anchor": "S3",
+  "explicit": false,
+  "target": null,
+  "question": "Mit gondolt Ábrahám a szívében, amikor a nevetése és a földre borulása történt?",
+  "answer": "Nem hitte, hogy száz éves férfinak gyermeke születhet, és ezt a gondolatot magában tartotta."
+ },
+ {
+  "id": 61,
+  "commentator": "Tzror HaMor",
+  "anchor": "S5",
+  "explicit": false,
+  "target": null,
+  "question": "Miért mondja Isten, hogy Sára szül fiút, holott Ábrahám Ismáelt kérte, és ez nem volt méltó jutalom?",
+  "answer": "Isten ellenére is teljesíti szavát: Sára fiút szül, mert Ábrahám Ismáelre vonatkozó kérését csak részben fogadja el, a gyermek Sárától származik, bár ez nem volt érdemes."
+ },
+ {
+  "id": 62,
+  "commentator": "Tzror HaMor",
+  "anchor": "CTX",
+  "explicit": false,
+  "target": null,
+  "question": "Miért köti Isten a szövetségét Izsákkal, és nem Ismáellel, ha Ábrahám Ismáelre vonatkozó kérését Isten meghallgatta?",
+  "answer": "Isten Ismáel nagy néppé tételével teljesíti Ábrahám kérését, de a szövetséget Izsákkal köti, mert Izsák már az anyaméhben szentelt volt."
+ },
+ {
+  "id": 63,
+  "commentator": "Yeriot Shlomo",
+  "anchor": "S3",
+  "explicit": true,
+  "target": "Rashi",
+  "question": "Az 'וַיֹּאמֶר בְּלִבּוֹ' kifejezés szerint Ábrahám gondolata csupán kétkedő, a valóságot tagadó (תמיה מכחשת) vagy valódi, nyitott kérdés (תמיה קיימת)?",
+  "answer": "Valódi, nyitott kérdés (תמיה קיימת), nem tagadás, és ezért kell Rashi magyarázatának, a 'הנעשה חסד זה לאחר', az egész mondatot így értelmezni."
+ },
+ {
+  "id": 64,
+  "commentator": "Yeriot Shlomo",
+  "anchor": "S4",
+  "explicit": true,
+  "target": null,
+  "question": "Miért nem származhatott gyermek a régi nemzedékektől eltérően a száz éves Ábrahámtól, akinek élete már túljutott felén és elérte az öregkort, hiszen a korábbi nemzedékek is öregkorukban nemzettek gyermekeket?",
+  "answer": "Az emberek élettartama megrövidült, így Ábrahám ideje már az élet második felében volt, és a kor is más természetű."
+ },
+ {
+  "id": 65,
+  "commentator": "Yeriot Shlomo",
+  "anchor": "S4",
+  "explicit": true,
+  "target": "Rashi",
+  "question": "Ha a Noé-kori nemzedékek gyermekei a Mindenható ítélete miatt nem születhettek, miért születtek mégis később, Noé után ötszáz éves korában?",
+  "answer": "A gyermeknemzés a 'gzera' után nem a tilalom, hanem a természet következménye volt, mert a gzera csak a forrást zárta el, nem az utódnemzést."
+ },
+ {
+  "id": 66,
+  "commentator": "Yeriot Shlomo",
+  "anchor": "S4",
+  "explicit": true,
+  "target": "Rashi",
+  "question": "Miért nemzettek a korai nemzedékek már gyermekkorban vagy igen korán, és miért nem lehettek alkalmasak a gyermeknemzésre a száz éves kor előtt?",
+  "answer": "Rashi szerint a korai nemzedékek nem voltak alkalmasak azonnali nemzésre, csak később, mert a gyermekkor hosszabb volt, majd az évek megrövidülésével a nemzés kora is lecsökkent."
+ },
+ {
+  "id": 67,
+  "commentator": "Yeriot Shlomo",
+  "anchor": "S6",
+  "explicit": true,
+  "target": null,
+  "question": "Miért nem ellentmondás, hogy egy öregkorban elgyengült férfi, mint Ábrahám, öregasszonytól gyermeket nemzzen, és miért nem bizonyítja Ketura gyermekeinek születése ezt az ellentmondást?",
+  "answer": "A lényeges nehézség az öregkori erő elgyengülése, és ez az, amit Sára kérdése is hordoz; a Ketura-gyermekek ezért nem jelentenek külön nehézséget."
+ },
+ {
+  "id": 68,
+  "commentator": "Toledot Yitzchak",
+  "anchor": "S2",
+  "explicit": false,
+  "target": null,
+  "question": "Miért nevetett Ábrahám (וַיִּצְחָק), és hogyan értelmezhető ez a nevetés?",
+  "answer": "A nevetés a nagy örömből fakadt, amelyen Ábrahám nem tudott uralkodni, tehát nem gúnyból vagy kétkedésből származott."
+ },
+ {
+  "id": 69,
+  "commentator": "Toledot Yitzchak",
+  "anchor": "S1",
+  "explicit": false,
+  "target": null,
+  "question": "Miért borult Ábrahám arcra (עַל־פָּנָיו) a nevetése közben?",
+  "answer": "Mert a nevetéssel járó ajakmozgásokat nem illik Isten előtt végezni, ezért esett arcra."
+ },
+ {
+  "id": 70,
+  "commentator": "Toledot Yitzchak",
+  "anchor": "S5",
+  "explicit": false,
+  "target": null,
+  "question": "Miért fogalmazza meg a szöveg Sára esetében két csodálkozást (וְאִם־שָׂרָה ... הֲבַת־תִּשְׁעִים), míg Ábrahámnál csak egyet (הַלְּבֶן מֵאָה שָׁנָה)?",
+  "answer": "Mert nem olyan csodálatos, hogy egy vén férfi nemzzen, mint hogy egy idős asszony essen teherbe, ezért Sára esetében kettős a csoda."
+ },
+ {
+  "id": 71,
+  "commentator": "Minei Targuma",
+  "anchor": "S2",
+  "explicit": false,
+  "target": null,
+  "question": "Mit jelent a \"וַיִּצְחָק\" ige ebben a versben, azaz mit fejez ki Ábrahám ilyen módon való reagálása?",
+  "answer": "Az arámi targum a \"וַיִּצְחָק\"-ot \"וחדי\" (örült, vidámkodott) szóval fordítja, tehát a szó itt örömöt jelent, nem kinevetést."
+ },
+ {
+  "id": 72,
+  "commentator": "Gur Aryeh",
+  "anchor": "S4",
+  "explicit": true,
+  "target": "Re'em",
+  "question": "Ha a דורות הראשונים בני ת' שנה הולidoztak, miért nem tekinthető ez a példa elegendő bizonyítéknak arra, hogy Ábrahám százévesen is nemzhet, figyelembe véve, hogy Noach 500 évesen nemzett és a korábbi nemzedékek is hasonló arányban éltek?",
+  "answer": "A Re'em szerint a korábbi példák nem döntőek, mert a nemzés kora és az élettartam aránya ettől még nem igazolja Ábrahám esetét, és Noach példája sem bizonyító, mivel csak egy embert említ a szöveg."
+ },
+ {
+  "id": 73,
+  "commentator": "Gur Aryeh",
+  "anchor": "S4",
+  "explicit": true,
+  "target": "Re'em",
+  "question": "Ha a szülés korának aránya az élettartamhoz hasonló, miért nem tekinthető ez a 'Jákób 95 évesen nemzette Benjámint' példa bizonyítéknak a nemzés kérdésében, és miért ne lenne Ábrahám számára a száz év ugyanolyan természetes kor?",
+  "answer": "A Re'em szerint az utódok nemzésének kezdete nem a teljes nemzési korot jelzi, ezért a példák nem döntőek a kérdésben."
+ },
+ {
+  "id": 74,
+  "commentator": "Gur Aryeh",
+  "anchor": "S4",
+  "explicit": true,
+  "target": null,
+  "question": "Miért nem bizonyíték Noach példája arra, hogy száz évesen is lehet nemzeni, tekintve hogy Rási szerint Isten 'elzárta forrását', azaz nem nemzett egész életében száz évesen?",
+  "answer": "Noach esete nem csodás, mert a forrás elzárása a tzadik kímélését szolgálta, a természet változtatása nélkül, ezért nem bizonyíték."
+ },
+ {
+  "id": 75,
+  "commentator": "Gur Aryeh",
+  "anchor": "S5",
+  "explicit": true,
+  "target": null,
+  "question": "Miért csodálkozott Ábrahám különösen Sárán, és miért nem tekintette természetesnek, hogy Ábrahám, aki már nemzett Iszmáelt, most Sárától is gyermeket kaphat?",
+  "answer": "Ábrahám azért csodálkozott, mert eddig egyik feleségétől sem nemzett, s a más feleségtől való nemzés mindig másképp zajlik; a Sárától való fogantatás tehát a természet megerősödését jelenti."
+ },
+ {
+  "id": 76,
+  "commentator": "Gur Aryeh",
+  "anchor": "S6",
+  "explicit": true,
+  "target": null,
+  "question": "Miért jelent csodát, hogy a kilencven éves Sára szülni fog, és mi a különbség a természetes nemzés és e helyzet között?",
+  "answer": "A szülés kezdete a természet erejének megerősödését követeli, ami a nemzés kora és Sára állapota miatt rendkívüli, ezért ez 'csodálatos' esemény."
+ },
+ {
+  "id": 77,
+  "commentator": "Gur Aryeh",
+  "anchor": "S4",
+  "explicit": false,
+  "target": null,
+  "question": "Miért nem a kor a kérdés lényege, hanem az, hogy Ábrahám már nemzett másoktól, mégsem Sárától?",
+  "answer": "Ábrahám csodálkozása nem a korból fakad, hanem abból, hogy Sárától eddig nem nemzett, ezért a most kezdődő nemzés a természet megerősödését jelzi."
+ },
+ {
+  "id": 78,
+  "commentator": "Gur Aryeh",
+  "anchor": "S1",
+  "explicit": false,
+  "target": null,
+  "question": "Miként magyarázható, hogy a korábbi nemzedékek korai utódnemzése a kezdeti nemzés korát mutatja, de nem a teljes életkort, és ezért nem bizonyíték Ábrahám esetében?",
+  "answer": "A korai nemzés gyors utódnemzés, amely a természet gyengülésére utal, így a korábbi példák nem igazolják a késői nemzés lehetőségét."
+ },
+ {
+  "id": 79,
+  "commentator": "Rav Hirsch",
+  "anchor": "S2",
+  "explicit": true,
+  "target": null,
+  "question": "Jelenti-e a ויצחק szó itt az örömöt, vagy valóban gúnyos, kétkedő nevetést?",
+  "answer": "A צחק a Tanakhban mindig ironikus nevetést jelent, amely elutasítást és kárhoztatást fejez ki, nem örömöt; Sárára vonatkozó ותצחק שרה sem volt öröm."
+ },
+ {
+  "id": 80,
+  "commentator": "Rav Hirsch",
+  "anchor": "S2",
+  "explicit": true,
+  "target": null,
+  "question": "Mi a közös alapfogalma a שאג, צעק, שחק, צחק gyökereknek, amelyek hangtanilag rokonak, jelentésük mégis ellentétes (sírás és nevetés)?",
+  "answer": "Mindegyik ellentétek észlelésén alapul: ha a kontraszt tőlünk távoli, nevetést, ha minket érint vagy azonosulunk vele, fájdalmas kiáltást vált ki."
+ },
+ {
+  "id": 81,
+  "commentator": "Rav Hirsch",
+  "anchor": "S3",
+  "explicit": false,
+  "target": null,
+  "question": "Hogyan lehetett, hogy Ábrahám, aki teljes bizalommal arcra borult Isten előtt, mégis nevetett a kijelentésen?",
+  "answer": "Az ellentét olyan nagy volt, hogy még a hívő Ábrahámnak sem sikerült visszatartania a nevetését az ígéret képtelenségén."
+ },
+ {
+  "id": 82,
+  "commentator": "Rav Hirsch",
+  "anchor": "S4",
+  "explicit": false,
+  "target": null,
+  "question": "Miért nevetséges, azaz miért abszurd, hogy a száz éves férfinak fia szülessen?",
+  "answer": "A természetes rend szerint a száz éves ember és kilencven éves felesége sosem volt gyermekes, így a fogantatás a természeti okok szerint teljesen valószínűtlen és nevetséges."
+ },
+ {
+  "id": 83,
+  "commentator": "Rav Hirsch",
+  "anchor": "S6",
+  "explicit": false,
+  "target": null,
+  "question": "Miért volt még nagyobb abszurdum a kilencven éves Sára által szült egyetlen, későn született fiúra épített nemzet ígérete?",
+  "answer": "A rendkívül csekély, szinte nem is létező kezdetre helyezett hatalmas remények ellentmondása az egész zsidó nép történetének képtelenségét mutatja a természeti törvények szerint."
+ },
+ {
+  "id": 84,
+  "commentator": "Rav Hirsch",
+  "anchor": "S5",
+  "explicit": false,
+  "target": null,
+  "question": "Miért kapcsolódik a nevetés a gyermek nevéhez, és miért őrződött meg Sára nevetése a következő nemzedékek számára?",
+  "answer": "A nevetés fontossága miatt Isten a gyermek nevében, az Icchák névben, a Sárával kapcsolatos nevetés emlékét állandósította minden későbbi nemzedék számára."
+ },
+ {
+  "id": 85,
+  "commentator": "Maskil LeDavid",
+  "anchor": "S1",
+  "explicit": true,
+  "target": "Onkelos",
+  "question": "Honnan tudjuk, hogy az „וַיִּפֹּל אַבְרָהָם עַל־פָּנָיו” kifejezést (és a nevetést) úgy kell érteni, hogy Ábrahám hitt, és nem gúnyolódott, ahogy Onkelosz is így fordítja?",
+  "answer": "A bizonyíték az, hogy Isten a nevetés miatt nevezi el Izsákot, ami csak akkor lehetséges, ha a nevetés nem gúny volt; így a fordítás is helytálló, és az Isten által Ábrahám bűne iránt mutatott türelem sem a nagy érdemével magyarázandó."
+ },
+ {
+  "id": 86,
+  "commentator": "Maskil LeDavid",
+  "anchor": "S4",
+  "explicit": true,
+  "target": "Ha-Ra'am",
+  "question": "Hogyan értelmezhető a „הַלְּבֶן מֵאָה־שָׁנָה יִוָּלֵד” mondat, ha a Ra'am szerint a kérdő hé csak tagadást fejez ki, és így a kérdés nem marad fenn?",
+  "answer": "A hé kérdő értelmű, külön olvasandó szó, így a kérdés valóban fennáll itt, és nem csupán cáfolat, mert itt a „הלבן” két részre bontható: a kérdés és a többi szó külön áll, azaz: „ilyen lesz-e másnak a világon, de nekem így lesz: száz évesen fog szülni”."
+ },
+ {
+  "id": 87,
+  "commentator": "Reggio",
+  "anchor": "S1",
+  "explicit": false,
+  "target": null,
+  "question": "Miért borult Ábrahám arcra a földre, amikor meghallotta az ígéretet?",
+  "answer": "A leborulás azt fejezi ki, hogy Ábrahám elmélkedni akart azon, hogyan lehetséges, hogy egy meddő asszony idős korában szüljön."
+ },
+ {
+  "id": 88,
+  "commentator": "Reggio",
+  "anchor": "S2",
+  "explicit": false,
+  "target": null,
+  "question": "Milyen nevetésről van szó a \"וַיִּצְחָק\" szóban: gúnyos nevetésről vagy örömnevetésről?",
+  "answer": "Öröm-nevetés volt, mert Ábrahám nagyon megörült a hírnek és Isten kegyelmén csodálkozott, nem pedig gúnyolódott."
+ },
+ {
+  "id": 89,
+  "commentator": "Reggio",
+  "anchor": "S4",
+  "explicit": false,
+  "target": null,
+  "question": "Kételkedett-e Ábrahám a \"הַלְּבֶן מֵאָה־שָׁנָה יִוָּלֵד\" kijelentésében, azaz tagadta-e az ígéret valóságát?",
+  "answer": "Nem, a mondat nem az igazság eltávolítására szolgál, hanem a csoda különlegességének kifejezésére."
+ },
+ {
+  "id": 90,
+  "commentator": "Reggio",
+  "anchor": "S4",
+  "explicit": true,
+  "target": null,
+  "question": "Miért \"יִוָּלֵד\" (passzív/niphal alak) a kifejezés és miért nem \"יוֹלִיד\" (hifil), illetve miért \"הַלְּבֶן\" és nem \"הַבֵּן\"?",
+  "answer": "Azért, mert száz évesen egy férfinak gyermeke születni nem akkora csoda, a nagy csoda az, hogy meddő asszonytól születik fia, ezért a szó a születendő gyermekre vonatkozik."
+ },
+ {
+  "id": 91,
+  "commentator": "Reggio",
+  "anchor": "S5",
+  "explicit": true,
+  "target": null,
+  "question": "Miért ismétlődik a szövegben a \"וְאִם\" kifejezés, és mit jelent a \"וְאִם־שָׂרָה\" fordulat?",
+  "answer": "Az \"ואם\" kérdő szó, az ismétlés pedig a kérdés nyomatékát és a csodálkozást fejezi ki."
+ },
+ {
+  "id": 92,
+  "commentator": "Reggio",
+  "anchor": "S6",
+  "explicit": false,
+  "target": null,
+  "question": "Miért említi a vers a \"הֲבַת־תִּשְׁעִים שָׁנָה\" kifejezésben Sárának kilencven éves korát, és mi a \"הֲ\" kérdő partikula szerepe?",
+  "answer": "A kilencven év hangsúlyozza, hogy Sára meddő és idős, így a születés kétszeres csoda lenne, a \"הֲ\" pedig kérdő partikula, tehát a mondat kérdés."
+ },
+ {
+  "id": 93,
+  "commentator": "Levush HaOrah",
+  "anchor": "S4",
+  "explicit": true,
+  "target": "Rashi",
+  "question": "Vajon bizonyíték-e az, hogy a régi nemzedékek (Sém és Noach nemzetségei) későn kezdtek gyermeket nemzeni, arra, hogy Ábrahámnak a száz évesen való fiúnemzés csodálatos volt?",
+  "answer": "A Ramah szerint nem, mert ezeknél a nemzedékeknél is az első gyermek születése korai volt, és csak a későbbi gyermekek születtek késő korban, így nincs igazi bizonyíték."
+ },
+ {
+  "id": 94,
+  "commentator": "Levush HaOrah",
+  "anchor": "S4",
+  "explicit": true,
+  "target": "הרא\"ם",
+  "question": "Miért csodálkozott Ábrahám önmagán, azon, hogy száz évesen nemzhet gyermeket, ha a csodálkozás valójában csak Sárára vonatkozhatott volna?",
+  "answer": "A Rag\"a azt válaszolja, hogy Ábrahám Iszmáel születése után is tudta, hogy képes nemzeni, így csodálkozása Sára meddőségének megszűnésére irányult; Levush ezt nem tartja megnyugtatónak."
+ },
+ {
+  "id": 95,
+  "commentator": "Levush HaOrah",
+  "anchor": "S5",
+  "explicit": false,
+  "target": "הרג\"א",
+  "question": "Mi magyarázza, hogy Ábrahám a Noách-kori nemzedékek gyors gyermeknemzéséhez képest miért volt meglepve, és miért csak Sára ellen támadt volna kételye?",
+  "answer": "A Rag\"a szerint Ábrahám azért csodálkozott, mert Sára évekig nem fogant, és úgy gondolta, a természet nem enged újabb fogamzást, míg a gyermekvállalás kezdete a természet erejének felülkerekedését jelenti."
+ },
+ {
+  "id": 96,
+  "commentator": "Levush HaOrah",
+  "anchor": "S4",
+  "explicit": false,
+  "target": null,
+  "question": "Miért nem nemzett Noách háromszáz-ötszáz év előtt gyermeket, és miért kezdett csak ötszáz évesen?",
+  "answer": "Rashi szerint Isten lezárta Noách forrását, hogy ne nemzzen méltatlan gyermekeket, akik miatt a világ pusztulása még nagyobb lett volna."
+ },
+ {
+  "id": 97,
+  "commentator": "Levush HaOrah",
+  "anchor": "S4",
+  "explicit": false,
+  "target": null,
+  "question": "Ha Ábrahám tudta, hogy Isten lezárhatja az ember nemző forrását, miért nem vonta le ebből, hogy saját késői fogantatása is Isten akaratának volt köszönhető, így csodálkozása indokolatlan lett volna?",
+  "answer": "Levush szerint Ábrahámnak így is gondolnia kellett volna, ezért Rashi csodálkozása nagy nehézséget jelent, ha Ábrahám ismerte Isten mértékeit."
+ },
+ {
+  "id": 98,
+  "commentator": "Rashi",
+  "anchor": "S2",
+  "explicit": false,
+  "target": null,
+  "question": "Mit jelent a „וַיִּצְחָק” kifejezés, vagyis Ábrahám nevetése öröm vagy gúny volt?",
+  "answer": "A ויצחק szó שמחה (öröm) értelmű, Sára nevetése ellenben gúnyolódás (מחוך)."
+ },
+ {
+  "id": 99,
+  "commentator": "Rashi",
+  "anchor": "S1",
+  "explicit": false,
+  "target": null,
+  "question": "Miért haragudott az Örökkévaló Sárára a nevetése miatt, Ábrahámra viszont nem, hiszen mindketten nevettek?",
+  "answer": "Ábrahám hitt és örvendezett, Sára nem hitt és gúnyolódott, ezért az Örökkévaló csak rá haragudott."
+ },
+ {
+  "id": 100,
+  "commentator": "Rashi",
+  "anchor": "S4",
+  "explicit": true,
+  "target": null,
+  "question": "Miért kérdő alakban (הַלְּבֶן) fogalmazza meg Ábrahám a mondanivalóját, és mit jelent ez a kérdés?",
+  "answer": "Ez a kérdés csodálkozást fejez ki, de valójában kijelentés: a בני ערלה… ekkora jótétemény másnak jut, nekem miért nem jut-e, vagyis a kérdés a 'Mi ez a kegy, amit az Örökkévaló velem tesz?' értelmű."
+ },
+ {
+  "id": 101,
+  "commentator": "Rashi",
+  "anchor": "S6",
+  "explicit": false,
+  "target": null,
+  "question": "Hogyan lehetséges, hogy a kilencven éves Sára képes szülni?",
+  "answer": "Sára alkalmas volt a szülésre, mert a régi nemzedékek száz évesen is nemzettek, de Ábrahám idejében a korok rövidültek és az erő hanyatlott, a tíz nemzedék (Sémtől Ábrahámig) példája pedig azt mutatja, hogy már hatvan-hetven évesen is születtek gyermekek."
+ },
+ {
+  "id": 102,
+  "commentator": "Steinsaltz",
+  "anchor": "S1",
+  "explicit": false,
+  "target": null,
+  "question": "Mit jelent a „וַיִּפֹּל אַבְרָהָם עַל־פָּנָיו” kifejezés, és milyen lelkiállapotot fejez ki?",
+  "answer": "Az arcra vetődés alázatos behódolást, önmegalázást fejez ki az isteni üzenet előtt."
+ },
+ {
+  "id": 103,
+  "commentator": "Steinsaltz",
+  "anchor": "S3",
+  "explicit": false,
+  "target": null,
+  "question": "Mit jelent a „וַיֹּאמֶר בְּלִבּוֹ” kifejezés, vagyis Ábrahám kimondatlan gondolata miben állt?",
+  "answer": "Ábrahám a szívében, belsőleg fogalmazta meg kétkedését, a kérdés tehát gondolatának tartalma."
+ },
+ {
+  "id": 104,
+  "commentator": "Steinsaltz",
+  "anchor": "S4",
+  "explicit": false,
+  "target": null,
+  "question": "Miért mondja Ábrahám, hogy „מֵאָה שָׁנָה” lesz az a kor, amikor a fia születik, holott ő akkor 99 éves volt?",
+  "answer": "A száz év az a kor, amelyben fia születne, ha Sára most fogana, hiszen Ábrahám akkor 99 éves volt és egy év múlva született volna a gyermek."
+ },
+ {
+  "id": 105,
+  "commentator": "Steinsaltz",
+  "anchor": "S6",
+  "explicit": false,
+  "target": null,
+  "question": "Lehetséges-e természetes módon, hogy a kilencven éves Sára gyermeket szüljön?",
+  "answer": "Nem, ez nyilvánvalóan ellentétes a természet törvényeivel, tehát csak csodaként valósulhat meg."
+ },
+ {
+  "id": 106,
+  "commentator": "Tze'enah Ure'enah",
+  "anchor": "S1",
+  "explicit": false,
+  "target": null,
+  "question": "Miért borul Ábrahám arcra, és mit jelent, hogy közben 'ויצחק', azaz nevet?",
+  "answer": "Ábrahám nem tudta visszafogni a nevetését, de szégyellte nyíltan nevetni, ezért arcra borulva nevetett."
+ },
+ {
+  "id": 107,
+  "commentator": "Tze'enah Ure'enah",
+  "anchor": "S3",
+  "explicit": true,
+  "target": null,
+  "question": "Hogyan lehetséges, hogy Ábrahám kétkedik gyermekvállalásban, holott Isten megígérte neki a fiút?",
+  "answer": "Ábrahám nem kételkedett Isten erejében, hanem csodának tartotta, hiszen korábban fiatalon és erősen sincs gyermeke Sárával, most viszont mindketten öregek, ezért hisz benne, hogy Isten ezt megteheti."
+ },
+ {
+  "id": 108,
+  "commentator": "Tze'enah Ure'enah",
+  "anchor": "S4",
+  "explicit": true,
+  "target": null,
+  "question": "Lehetséges-e egyáltalán, hogy egy száz éves férfinak gyermeke szülessen (הַלְּבֶן מֵאָה־שָׁנָה יִוָּלֵד)?",
+  "answer": "Természetes módon is előfordul, hogy idős emberek gyermeket nemzenek, sőt Ábrahám Ketúrától is nemzett fiakat negyven évvel később, így a csoda abban rejlik, hogy ők meddőek voltak fiatalon, most pedig mégis gyermeket kapnak."
+ },
+ {
+  "id": 109,
+  "commentator": "Tze'enah Ure'enah",
+  "anchor": "S6",
+  "explicit": false,
+  "target": null,
+  "question": "Szülhet-e egy kilencven éves asszony (הֲבַת־תִּשְׁעִים שָׁנָה תֵּלֵד)?",
+  "answer": "Kilencven évesen is lehetséges gyermekszülés, de Sára esetében a csodát az jelenti, hogy Isten visszaadja menstruációját és tejtermelését."
+ },
+ {
+  "id": 110,
+  "commentator": "Tze'enah Ure'enah",
+  "anchor": "S5",
+  "explicit": false,
+  "target": null,
+  "question": "Honnan tudta meg a világ, hogy Sára valóban saját fiát szülte, és nem idegen gyermeket fogadott örökbe?",
+  "answer": "Isten visszaadta Sára menstruációját és bő tejet adott neki, így ő a többi gyermeket is szoptatta, és az asszonyok meggyőződtek arról, hogy valóban szült."
+ },
+ {
+  "id": 111,
+  "commentator": "Tze'enah Ure'enah",
+  "anchor": "S5",
+  "explicit": false,
+  "target": null,
+  "question": "Miért vette el Isten Sárától az 'י' betűt, és mi lett vele, összefüggésben a nevek megváltozásával?",
+  "answer": "A Midrás szerint Isten az 'י' betűt kettéosztotta: felét Ábrahámnak adta, felét Sáránál hagyta, és az 'י' panaszkodott, mire Isten Hóseát és később Jehósuát ígérte neki."
+ },
+ {
+  "id": 112,
+  "commentator": "Tze'enah Ure'enah",
+  "anchor": "S2",
+  "explicit": false,
+  "target": null,
+  "question": "Gúnyolódott-e Ábrahám a nevetésével, amikor Isten a fiút Jichák (יִצְחָק) névre rendelte?",
+  "answer": "Nem gúnyolódott, hanem örömében nevetett, ezért nevezte el Isten a fiút 'öröm' jelentésű Jichák névre."
+ },
+ {
+  "id": 113,
+  "commentator": "Tze'enah Ure'enah",
+  "anchor": "S2",
+  "explicit": false,
+  "target": null,
+  "question": "Miért maradt meg Jichák neve változatlanul, míg Ábrám és Jákob nevét megváltoztatták?",
+  "answer": "Jichák neve Istentől származott, ezért örökre megmaradt, míg Ábrahám a sok nemzet atyja lett, Jákob pedig megküzdött az angyallal, ezért változott nevük."
+ },
+ {
+  "id": 114,
+  "commentator": "Tze'enah Ure'enah",
+  "anchor": "S2",
+  "explicit": false,
+  "target": null,
+  "question": "Mit jelentenek az 'יצחק' név betűi?",
+  "answer": "Az 'י' a tíz csodára, a 'צ' a Sára kilencven évére, a 'ח' a nyolcadik napi körülmetélésre, a 'ק' pedig Ábrahám száz évére utal."
+ },
+ {
+  "id": 115,
+  "commentator": "Nachalat Ya'akov",
+  "anchor": "S4",
+  "explicit": true,
+  "target": null,
+  "question": "Miért említi Ábrahám örömében, a fiú születésének bejelentésekor, hogy a száz éves férfi fiat nemz (הלבן מאה שנה יולד)? Mi az üzenete ennek a kijelentésnek a kontextusban?",
+  "answer": "Ábrahám a rossz hajlam (a zohama) megszűnésére és a világ elkövetkező korszakának (עולם הבא) közeledtére gondolt: az öregkor miatt a vágy elapad, ezért mondta ezt örömmel."
+ },
+ {
+  "id": 116,
+  "commentator": "Nachalat Ya'akov",
+  "anchor": "S6",
+  "explicit": false,
+  "target": null,
+  "question": "Mit jelent az, hogy Sára kilencven évesen szül (הבת תשעים שנה תלד), és miért fontos ez a szöveg kontextusában?",
+  "answer": "Sára kilencven éves kora jelzi, hogy a vágy és a szexuális hajlam elmúlt, így a gyermek a rossz kiirtásának és a messiási kornak a jele."
+ },
+ {
+  "id": 117,
+  "commentator": "Nachalat Ya'akov",
+  "anchor": "S5",
+  "explicit": false,
+  "target": null,
+  "question": "Miért kapcsolódik Ábrahám öröme a bűn és a születés összefüggéséhez, azaz miért idézi Dávid szavait a bűnös születésről a szöveg kontextusában?",
+  "answer": "Ábrahám a születés bűnös eredetéből (a zohamából) való megtisztulást látta abban, hogy ő és Sára megöregszenek, így a rossz kiirtódik a világból."
+ },
+ {
+  "id": 118,
+  "commentator": "Mechokekei Yehudah; Karnei Ohr",
+  "anchor": "S5",
+  "explicit": false,
+  "target": null,
+  "question": "Hogyan lehetett képes Sárá gyermeket szülni, ha a Talmud szerint eredendően meddő volt, sőt méhe sem volt?",
+  "answer": "A Talmud szerint Sárának nem volt méhe, és Isten a Bereshit Rabba szerint mesterségesen kialakított számára egy méhet (\"gelef lah ha-Kadosh Baruch Hu ikar mitrin\"), így vált lehetségessé a fogantatás."
+ },
+ {
+  "id": 119,
+  "commentator": "Mechokekei Yehudah; Yahel Ohr",
+  "anchor": "S6",
+  "explicit": false,
+  "target": null,
+  "question": "Miért nevezi a szöveg csodának Sára kilencven éves korában történő szülését, és miben áll a csoda?",
+  "answer": "Sára természetéből fakadóan meddő volt, ezért a kilencven évesen történő fogantatás természetfeletti csoda."
+ },
+ {
+  "id": 120,
+  "commentator": "Mechokekei Yehudah; Yahel Ohr",
+  "anchor": "S4",
+  "explicit": false,
+  "target": null,
+  "question": "Hogyan lehetséges, hogy Ábrahám száz évesen gyermeket nemzzen?",
+  "answer": "A Radak részletesen kifejti a kérdést, a magyarázata a szöveg természetfeletti jellegére utal (a Mechokekei Yehudah ennek kifejtését a Radakra utalja)."
+ },
+ {
+  "id": 121,
+  "commentator": "Mechokekei Yehudah; Yahel Ohr",
+  "anchor": "S4",
+  "explicit": false,
+  "target": null,
+  "question": "Elfogadható-e, hogy egy férfi száz évesen nemzzen, tekintve, hogy a későbbi nemzedékekben ez nem volt szokásos?",
+  "answer": "Ábrahám korában az emberek életkora hosszabb volt, mint Dávid nemzedékében; a Ruth-könyvi nemzetségi lista (Salmon, Boáz, Óbed, Isai) szerint mindegyikük kilencvenegy évesen nemzett, ami mutatja, hogy a korai ősöknél ez természetes volt."
+ },
+ {
+  "id": 122,
+  "commentator": "Mechokekei Yehudah; Yahel Ohr",
+  "anchor": "S4",
+  "explicit": true,
+  "target": "Ibn Ezra",
+  "question": "Érthető-e Ibn Ezra magyarázata a Ruth-könyvi nemzetségi számításról, amely az Ábrahám-korabeli hosszú életkorról szól?",
+  "answer": "Az idézett szöveg hiányos és elírt, a helyes olvasat szerint Dávid ősei mindannyian kilencvenegy évesen nemzettek, és Ábrahám korában az életkor hosszabb volt."
+ },
+ {
+  "id": 123,
+  "commentator": "The Torah; A Women's Commentary",
+  "anchor": "S2",
+  "explicit": false,
+  "target": null,
+  "question": "Mi a kapcsolat Ábrahám nevetése (וַיִּצְחָק) és Sára későbbi nevetése között a fiú ígéretének hallatán, a 18. fejezetben?",
+  "answer": "Sára ugyanúgy nevetni fog a fiúgyermek ígéretének hallatán, mint most Ábrahám, ami párhuzamba állítja a két nevetést (vö. 18:12)."
+ },
+ {
+  "id": 124,
+  "commentator": "Bekhor Shor",
+  "anchor": "S1",
+  "explicit": false,
+  "target": null,
+  "question": "Mit jelent az, hogy Ábrahám arcra borult (וַיִּפֹּל אַבְרָהָם עַל־פָּנָיו), és mit bizonyít ez a testtartás a hozzáállásáról?",
+  "answer": "A földre borulás azt bizonyítja, hogy Ábrahám hitt az ígéretben, és hálából, hódolattal fogadta a hírt."
+ },
+ {
+  "id": 125,
+  "commentator": "Bekhor Shor",
+  "anchor": "S2",
+  "explicit": false,
+  "target": null,
+  "question": "Kétkedésből vagy örömből nevetett Ábrahám (וַיִּצְחָק), amikor meghallotta, hogy kilencvenéves felesége fiút szül?",
+  "answer": "Öröméből és hálájából nevetett, nem kétkedésből, hiszen a nevetés a csodának és a jónak az örömteli elfogadását fejezi ki."
+ },
+ {
+  "id": 126,
+  "commentator": "Bekhor Shor",
+  "anchor": "S3",
+  "explicit": false,
+  "target": null,
+  "question": "Mit jelent az, hogy Ábrahám „a szívében mondta” (וַיֹּאמֶר בְּלִבּוֹ), vagyis milyen tartalmú volt a belső szava?",
+  "answer": "Hálás dicsőítés volt: Ábrahám a csoda nagyságát és az Isten által a világrend megváltoztatásával nyújtott jóságot magasztalta."
+ },
+ {
+  "id": 127,
+  "commentator": "Chizkuni",
+  "anchor": "S3",
+  "explicit": false,
+  "target": null,
+  "question": "Miért áll itt, a 'וַיֹּאמֶר בְּלִבּוֹ' kifejezésben a 'בְּלִבּוֹ' (szívében), és nem a 'עַל לִבּוֹ' forma, amelyet a Tórában máskor a jámborakról használnak?",
+  "answer": "Azért, mert Ábrahám ebben a dologban magában csodálkozott, a 'בְּלִבּוֹ' kifejezés pedig a bensőjében zajló gondolkodást jelöli, míg a rosszakról írt 'בלבו' a szívük fölötti uralmukra utal."
+ },
+ {
+  "id": 128,
+  "commentator": "Chizkuni",
+  "anchor": "S4",
+  "explicit": false,
+  "target": null,
+  "question": "Hitt-e Ábrahám az isteni ígéretben, amikor azt mondta: 'הַלְּבֶן מֵאָה שָׁנָה יִוָּלֵד'?",
+  "answer": "Úgy tűnik, Ábrahám nem hitte el a hírt, mert a mondata kételkedést tükröz."
+ },
+ {
+  "id": 129,
+  "commentator": "Birkat Asher on Torah",
+  "anchor": "S2",
+  "explicit": true,
+  "target": "Rashi",
+  "question": "Mit jelent a „וַיִּצְחָק” ige ezen a helyen: nevetést (kinevetést) vagy örömöt?",
+  "answer": "Rási Onkelosz nyomán az örömteli nevetés értelmét adja a szónak, és ez a fordítás a következő szavakat is másképp értelmezi, ami nehézséget okoz."
+ },
+ {
+  "id": 130,
+  "commentator": "Birkat Asher on Torah",
+  "anchor": "S4",
+  "explicit": true,
+  "target": "Rashi",
+  "question": "A „הַלְּבֶן מֵאָה־שָׁנָה יִוָּלֵד” kérdése valódi kérdés, amelyre választ várnak, vagy retorikai kérdés?",
+  "answer": "Rási szerint retorikai kérdés (a hitetlenkedés kifejezése), ami elfogadható értelmezés, bár a szöveg más, valódi kérdéseket is felvethet."
+ },
+ {
+  "id": 131,
+  "commentator": "Birkat Asher on Torah",
+  "anchor": "S4",
+  "explicit": false,
+  "target": null,
+  "question": "Miért nem kell valódi választ adni a „הַלְּבֶן מֵאָה־שָׁנָה יִוָּלֵד” kérdésre, és mi a különbség a valódi kérdés és a retorikai kérdés között?",
+  "answer": "A szerző szerint meg kell különböztetni a választ váró kérdést a retorikai kérdéstől, vagy a csodálkozó felkiáltástól („האמנם זה כך”), és a „הלבן” ez utóbbi típusba tartozik."
+ },
+ {
+  "id": 132,
+  "commentator": "Chibbah Yeteirah on Torah",
+  "anchor": "S3",
+  "explicit": false,
+  "target": null,
+  "question": "Mit jelent Abrahám belső reakciója, a szívében mondott szavai és a ויצחק, és hogyan viszonyul ez Sárának a 18. fejezetben említett nevetéséhez?",
+  "answer": "A kommentátor a 18. fejezetbeli „למה זה צחקה שרה” vershez utal, vagyis a nevetés és a kétkedés kérdését ott tárgyalja tovább."
+ },
+ {
+  "id": 133,
+  "commentator": "Em LaMikra",
+  "anchor": "CTX",
+  "explicit": false,
+  "target": null,
+  "question": "Mit jelent a csoda vagy a 'nisz' fogalma ebben az esetben: a Sárának kilencven évesen fogant gyermek pusztán a természet felfüggesztése, vagy a természeti törvények isteni célú felhasználása?",
+  "answer": "A csoda nem csupán a természet felülírása, hanem a természeti rend isteni gondviselésből fakadó, célzott felhasználása."
+ },
+ {
+  "id": 134,
+  "commentator": "Em LaMikra",
+  "anchor": "S6",
+  "explicit": false,
+  "target": null,
+  "question": "Hogyan lehetséges, hogy a kilencven éves Sára szüljön, amikor a női természetes működés ebben a korban már megszűnik?",
+  "answer": "A szerző egy modern orvosi esetet hoz példaként, amelyben egy nő kilencvenhárom évesen, ötvenkét éves kora után újra menstruált, így a jelenség természeti keretek között is előfordulhat."
+ },
+ {
+  "id": 135,
+  "commentator": "Alshich",
+  "anchor": "S2",
+  "explicit": true,
+  "target": null,
+  "question": "Ha a וַיִּצְחָק szó nevetést jelent, hogyan nevethetett Ábrahám Isten szaván; ha pedig örömöt, hogyan örülhetett és kételkedhetett egyszerre?",
+  "answer": "A צחק itt öröm, Ábrahám a hír hallatán örvendezett, és ez az öröm nem Isten szavának kétségbevonása volt."
+ },
+ {
+  "id": 136,
+  "commentator": "Alshich",
+  "anchor": "S3",
+  "explicit": true,
+  "target": null,
+  "question": "Hogyan lehetséges, hogy Ábrahám kétkedett Isten szavában, hiszen Isten már korábban megígérte neki a fiút?",
+  "answer": "Ábrahám nem tagadta Isten szavát, hanem csodálkozva, kérdező formában, szinte öröm és hálaadás közepette fogalmazta meg a csodát."
+ },
+ {
+  "id": 137,
+  "commentator": "Alshich",
+  "anchor": "S4",
+  "explicit": true,
+  "target": null,
+  "question": "Miért áll a הַלְּבֶן מֵאָה־שָׁנָה szóban a למ\"ד, hiszen a הַבֵּן מֵאָה שָׁנָה elegendő lenne?",
+  "answer": "A למ\"ד a הא\" התימה kérdőszó része, így a mondat csodálkozó kérdés: vajon a száz éves ember fiút nemzhet-e, ami csak neki, Ábrahámnak adatott."
+ },
+ {
+  "id": 138,
+  "commentator": "Alshich",
+  "anchor": "S4",
+  "explicit": true,
+  "target": null,
+  "question": "Miért יוּלַד (passzív/niphal) és nem יוֹלִיד (hifil) az igealak a „יִוָּלֵד” szóban?",
+  "answer": "Az יִוָּלֵד alak a fiú születésére utal passzívan, a jelentés pedig ugyanaz marad, mint a hifil formáé."
+ },
+ {
+  "id": 139,
+  "commentator": "Alshich",
+  "anchor": "CTX",
+  "explicit": false,
+  "target": null,
+  "question": "Miért fordul Ábrahám gondolatai a v. 17 örömteli csodája után azonnal Ismáel felé?",
+  "answer": "Mivel Ábrahám úgy érezte, kegyelmi idő van, a rossz Ismáel sorsáért is könyörgött, hogy az Isten előtt éljen, azaz visszatérjen a bűnbánatra."
+ },
+ {
+  "id": 140,
+  "commentator": "Divrei David",
+  "anchor": "S4",
+  "explicit": true,
+  "target": "Rashi",
+  "question": "Mi a különbség aszerint, hogy az emberek életkora lerövidült, ha a termékenység korhatára mégis a régi korokhoz képest arányosan maradt meg, vagyis miért nehéz Rásit magyarázata (hogy Ábrahám ereje gyengült) a Ráma szerint?",
+  "answer": "A Divrei David szerint a Ráma kérdése nem helytálló, mert ha az életkor megrövidült, a termékenység ideje is arányosan csökkent, így Ábrahám ereje már a szokásos idő előtt elhagyta."
+ },
+ {
+  "id": 141,
+  "commentator": "Divrei David",
+  "anchor": "S4",
+  "explicit": false,
+  "target": null,
+  "question": "Miért csodálkozott Ábrahám a saját korán, és miért mondta szívében, hogy száz évesen nem születhet gyermek?",
+  "answer": "Ábrahám a saját öregségén csodálkozott, mert ereje a kora előtt, idő előtt elhagyta, és korában már senki sem nemzett gyermeket."
+ },
+ {
+  "id": 142,
+  "commentator": "Divrei David",
+  "anchor": "S3",
+  "explicit": false,
+  "target": null,
+  "question": "Mi okozta Ábrahám csodálkozását a szíve mélyén, amikor a fiúgyermek ígéretét hallotta?",
+  "answer": "Egyik magyarázat szerint Ábrahám csodálkozása abból fakadt, hogy Sárától eddig nem született gyermeke."
+ },
+ {
+  "id": 143,
+  "commentator": "Divrei David",
+  "anchor": "S6",
+  "explicit": false,
+  "target": null,
+  "question": "Hogyan értelmezhető, hogy Ábrahám ereje gyengülése miatt nem nemzhetett, ha ez ellentmond annak, hogy Rási szerint az ő kora még nem volt olyan rövid, mint később?",
+  "answer": "A Divrei David szerint ha nem így volna, Rási nem mondta volna, hogy Ábrahám ereje meggyengült, tehát a gyengülés valóságos volt."
+ }
+]

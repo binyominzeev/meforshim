@@ -1,0 +1,46 @@
+{
+ "items": [
+  {
+   "anchor": "S1",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért írja le a Tóra ismét, hogy Ábrahám arcra borult (\"וַיִּפֹּל אַבְרָהָם עַל־פָּנָיו\"), amikor ezt már korábban is megtette?",
+   "answer_hu": "A korábbi nefilá a prófétai kinyilatkoztatás előkészítése volt, ez a mostani pedig Jišmáélért mondott könyörgés, tehát más célra szolgál."
+  },
+  {
+   "anchor": "S1",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért említi a Tóra minden alkalommal a nefilá (leborulás) kifejezést a prófétálással kapcsolatban?",
+   "answer_hu": "A körülmetélés előtt a próféták csak leborulva prófétálhattak, mert a orlá (előbőr) utálatos Isten előtt; a körülmetélés után már állva prófétálhattak, ahogy Ábrahámról írják (18:22)."
+  },
+  {
+   "anchor": "S2",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Jelenti-e a \"וַיִּצְחָק\" kifejezés, hogy Ábrahám gúnyolódott vagy kinevette az ígéretet?",
+   "answer_hu": "Nem gúnyolódás, hanem öröm kifejezése, mert Isten parancsolta a fiú nevének megadását \"Jichák\" (nevetés) alapján, és Onkelosz is \"ვ‑chadi\" (örült) fordítással adta vissza."
+  },
+  {
+   "anchor": "S3",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Azt jelzi-e Ábrahám \"בְּלִבּוֹ\" (szívében mondott) szavai, hogy kétkedett a csodában?",
+   "answer_hu": "Nem; Ábrahám szívében a természet rendjét látta, de tudta és hitte, hogy Isten hatalma a csodát is megvalósíthatja."
+  },
+  {
+   "anchor": "S4",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Ábrahám szavai (\"הַלְּבֶן מֵאָה־שָׁנָה יִוָּלֵד\") azt fejezik-e ki, hogy elutasítja a csodát, mint nagy és rendkívüli eseményt?",
+   "answer_hu": "Nem, az mondat csak a természetes rendről szól, és Ábrahám a csodát a Teremtő hatalmában hitte."
+  },
+  {
+   "anchor": "S6",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Hogyan lehetett Ábrahám hite összeegyeztethető azzal, hogy Sára kilencven évesen természetes úton már nem szülhetett (\"הֲבַת־תִּשְׁעִים שָׁנָה תֵּלֵד\")?",
+   "answer_hu": "Ábrahám tudta, hogy természetes úton ez lehetetlen, de a csoda útján Isten hatalmával hitte, ahogy a Tóra mondja: \"és hitt az Örökkévalóban\"."
+  }
+ ]
+}

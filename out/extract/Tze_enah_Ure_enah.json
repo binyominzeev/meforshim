@@ -1,0 +1,67 @@
+{
+ "items": [
+  {
+   "anchor": "S1",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért borul Ábrahám arcra, és mit jelent, hogy közben 'ויצחק', azaz nevet?",
+   "answer_hu": "Ábrahám nem tudta visszafogni a nevetését, de szégyellte nyíltan nevetni, ezért arcra borulva nevetett."
+  },
+  {
+   "anchor": "S3",
+   "explicit": true,
+   "target": null,
+   "question_hu": "Hogyan lehetséges, hogy Ábrahám kétkedik gyermekvállalásban, holott Isten megígérte neki a fiút?",
+   "answer_hu": "Ábrahám nem kételkedett Isten erejében, hanem csodának tartotta, hiszen korábban fiatalon és erősen sincs gyermeke Sárával, most viszont mindketten öregek, ezért hisz benne, hogy Isten ezt megteheti."
+  },
+  {
+   "anchor": "S4",
+   "explicit": true,
+   "target": null,
+   "question_hu": "Lehetséges-e egyáltalán, hogy egy száz éves férfinak gyermeke szülessen (הַלְּבֶן מֵאָה־שָׁנָה יִוָּלֵד)?",
+   "answer_hu": "Természetes módon is előfordul, hogy idős emberek gyermeket nemzenek, sőt Ábrahám Ketúrától is nemzett fiakat negyven évvel később, így a csoda abban rejlik, hogy ők meddőek voltak fiatalon, most pedig mégis gyermeket kapnak."
+  },
+  {
+   "anchor": "S6",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Szülhet-e egy kilencven éves asszony (הֲבַת־תִּשְׁעִים שָׁנָה תֵּלֵד)?",
+   "answer_hu": "Kilencven évesen is lehetséges gyermekszülés, de Sára esetében a csodát az jelenti, hogy Isten visszaadja menstruációját és tejtermelését."
+  },
+  {
+   "anchor": "S5",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Honnan tudta meg a világ, hogy Sára valóban saját fiát szülte, és nem idegen gyermeket fogadott örökbe?",
+   "answer_hu": "Isten visszaadta Sára menstruációját és bő tejet adott neki, így ő a többi gyermeket is szoptatta, és az asszonyok meggyőződtek arról, hogy valóban szült."
+  },
+  {
+   "anchor": "S5",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért vette el Isten Sárától az 'י' betűt, és mi lett vele, összefüggésben a nevek megváltozásával?",
+   "answer_hu": "A Midrás szerint Isten az 'י' betűt kettéosztotta: felét Ábrahámnak adta, felét Sáránál hagyta, és az 'י' panaszkodott, mire Isten Hóseát és később Jehósuát ígérte neki."
+  },
+  {
+   "anchor": "S2",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Gúnyolódott-e Ábrahám a nevetésével, amikor Isten a fiút Jichák (יִצְחָק) névre rendelte?",
+   "answer_hu": "Nem gúnyolódott, hanem örömében nevetett, ezért nevezte el Isten a fiút 'öröm' jelentésű Jichák névre."
+  },
+  {
+   "anchor": "S2",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért maradt meg Jichák neve változatlanul, míg Ábrám és Jákob nevét megváltoztatták?",
+   "answer_hu": "Jichák neve Istentől származott, ezért örökre megmaradt, míg Ábrahám a sok nemzet atyja lett, Jákob pedig megküzdött az angyallal, ezért változott nevük."
+  },
+  {
+   "anchor": "S2",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Mit jelentenek az 'יצחק' név betűi?",
+   "answer_hu": "Az 'י' a tíz csodára, a 'צ' a Sára kilencven évére, a 'ח' a nyolcadik napi körülmetélésre, a 'ק' pedig Ábrahám száz évére utal."
+  }
+ ]
+}

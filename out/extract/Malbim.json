@@ -1,0 +1,46 @@
+{
+ "items": [
+  {
+   "anchor": "S1",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért borul Ábrahám arcra, és miért nevet, ha a jó hírt kapja?",
+   "answer_hu": "Nevetése és öröme ellenére a hír csodálkozást keltett benne, ezért esett le arcra és gondolkodott el rajta."
+  },
+  {
+   "anchor": "S2",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Mit jelent Ábrahám nevetése (ויצחק) ebben a jelenetben?",
+   "answer_hu": "A nevetés öröm volt, de a csodálkozással vegyesen, nem kétkedés."
+  },
+  {
+   "anchor": "S3",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Mit jelent az, hogy Ábrahám „a szívében” mondja (ויאמר בלבו), és mi bennük a csodálkozás tartalma?",
+   "answer_hu": "A „בלבו” belső gondolkodást, csodálkozást jelent, amelyben három különböző csodát fogalmaz meg."
+  },
+  {
+   "anchor": "S4",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Lehetséges-e, hogy egy százéves férfinak gyermeke szülessen (הלבן מאה שנה יולד)?",
+   "answer_hu": "Természetes rend szerint ez nem lehetséges, ezért a férfi részéről csoda volna, még ha a nő szülne is."
+  },
+  {
+   "anchor": "S5",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Szülhet-e Sára gyermeket, miután meddő volt (ואם־שרה)?",
+   "answer_hu": "Sára meddősége miatt második csodás nehézség, hogy most szülhet."
+  },
+  {
+   "anchor": "S6",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Szülhet-e a kilencvenéves asszony (הבת תשעים שנה תלד), akkor is, ha nem volt meddő?",
+   "answer_hu": "Ez a harmadik csoda: a kilencvenéves kor önmagában is természetellenes szüléshez vezetne, függetlenül a meddőségtől."
+  }
+ ]
+}

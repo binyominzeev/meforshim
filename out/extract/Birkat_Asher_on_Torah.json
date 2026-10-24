@@ -1,0 +1,25 @@
+{
+ "items": [
+  {
+   "anchor": "S2",
+   "explicit": true,
+   "target": "Rashi",
+   "question_hu": "Mit jelent a „וַיִּצְחָק” ige ezen a helyen: nevetést (kinevetést) vagy örömöt?",
+   "answer_hu": "Rási Onkelosz nyomán az örömteli nevetés értelmét adja a szónak, és ez a fordítás a következő szavakat is másképp értelmezi, ami nehézséget okoz."
+  },
+  {
+   "anchor": "S4",
+   "explicit": true,
+   "target": "Rashi",
+   "question_hu": "A „הַלְּבֶן מֵאָה־שָׁנָה יִוָּלֵד” kérdése valódi kérdés, amelyre választ várnak, vagy retorikai kérdés?",
+   "answer_hu": "Rási szerint retorikai kérdés (a hitetlenkedés kifejezése), ami elfogadható értelmezés, bár a szöveg más, valódi kérdéseket is felvethet."
+  },
+  {
+   "anchor": "S4",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért nem kell valódi választ adni a „הַלְּבֶן מֵאָה־שָׁנָה יִוָּלֵד” kérdésre, és mi a különbség a valódi kérdés és a retorikai kérdés között?",
+   "answer_hu": "A szerző szerint meg kell különböztetni a választ váró kérdést a retorikai kérdéstől, vagy a csodálkozó felkiáltástól („האמנם זה כך”), és a „הלבן” ez utóbbi típusba tartozik."
+  }
+ ]
+}

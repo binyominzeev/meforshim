@@ -1,0 +1,18 @@
+{
+ "items": [
+  {
+   "anchor": "S3",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Abrahám 'szívében' vajon kételkedett-e Isten hatalmában, amikor azt gondolta, hogy századik évében születik gyermeke?",
+   "answer_hu": "Nem; Ábrahám nem Isten képességét, hanem az ígéret szavainak szándékát kérdőjelezte meg."
+  },
+  {
+   "anchor": "S4",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért mondja az ige a הַלְּבֶן מֵאָה־שָׁנָה יִוָּלֵד kifejezésben, hogy 'születik' (יִוָּלֵד), és mit jelent ez, ha Sárának nem kell szó szerint szülnie?",
+   "answer_hu": "A szöveg 'נתתי ממנה' (adok tőle), nem pedig 'גם תלד' (ő is szül) kifejezést használ, ezért a gyermek Sárához más módon kapcsolódhat, például úgy, mint Noémi fia, és később Ábrahámnak adja."
+  }
+ ]
+}

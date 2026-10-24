@@ -1,0 +1,18 @@
+{
+ "items": [
+  {
+   "anchor": "S3",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért áll itt, a 'וַיֹּאמֶר בְּלִבּוֹ' kifejezésben a 'בְּלִבּוֹ' (szívében), és nem a 'עַל לִבּוֹ' forma, amelyet a Tórában máskor a jámborakról használnak?",
+   "answer_hu": "Azért, mert Ábrahám ebben a dologban magában csodálkozott, a 'בְּלִבּוֹ' kifejezés pedig a bensőjében zajló gondolkodást jelöli, míg a rosszakról írt 'בלבו' a szívük fölötti uralmukra utal."
+  },
+  {
+   "anchor": "S4",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Hitt-e Ábrahám az isteni ígéretben, amikor azt mondta: 'הַלְּבֶן מֵאָה שָׁנָה יִוָּלֵד'?",
+   "answer_hu": "Úgy tűnik, Ábrahám nem hitte el a hírt, mert a mondata kételkedést tükröz."
+  }
+ ]
+}

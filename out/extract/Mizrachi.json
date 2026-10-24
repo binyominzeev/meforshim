@@ -1,0 +1,39 @@
+{
+ "items": [
+  {
+   "anchor": "S2",
+   "explicit": true,
+   "target": null,
+   "question_hu": "Miért nem rótta meg az Örökkévaló Ábrahámot nevetéséért, miközben Sárát megrótta a nevetéséért?",
+   "answer_hu": "Ábrahám nevetése nem a hitetlenséget fejezte ki, hanem a csodának való örömteli elhitelezését, ezért nem volt rá szükség a megrovásra."
+  },
+  {
+   "anchor": "S3",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Kifejezi-e Ábrahám csodálkozása (a lelkében mondott szavai) a hitetlenséget vagy a hit megerősítését?",
+   "answer_hu": "Ábrahám csodálkozása megerősítő (mekajemes) jellegű, mert hitt abban, hogy száz éves ember is nemzhet, így nem tagadja a dolgot."
+  },
+  {
+   "anchor": "S6",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Sára csodálkozása (a kilencven éves asszony szüléséről) hitetlenséget vagy a szülőképesség elfogadását fejezi-e ki?",
+   "answer_hu": "Sára esetében a csodálkozás megerősítő: a 'ha Sára, a kilencven éves' kifejezés azt jelenti, hogy alkalmas volt a szülésre, így a dolog elfogadható."
+  },
+  {
+   "anchor": "S4",
+   "explicit": true,
+   "target": "Rashi",
+   "question_hu": "Megoldja-e a nehézséget az a magyarázat, hogy a korai nemzedékekben még ötszáz évesen is nemzettek, mert az évek száma csökkent Ábrahám idejére?",
+   "answer_hu": "Nem oldja meg, mert a korábbi nemzedékek példája nem indokolja Ábrahám csodálkozásának elvetését, a nehézség továbbra is fennáll."
+  },
+  {
+   "anchor": "S4",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Van-e bizonyíték arra, hogy egy száz éves férfi gyermeket nemzhet, a régi nemzedékek példáira hivatkozva?",
+   "answer_hu": "A példák nem bizonyítanak, mert azok a nemzések életük végén történtek, és Ábrahám is csak száz éve után nemzett, így a csodálkozás jogos maradt."
+  }
+ ]
+}

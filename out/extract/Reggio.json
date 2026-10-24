@@ -1,0 +1,46 @@
+{
+ "items": [
+  {
+   "anchor": "S1",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért borult Ábrahám arcra a földre, amikor meghallotta az ígéretet?",
+   "answer_hu": "A leborulás azt fejezi ki, hogy Ábrahám elmélkedni akart azon, hogyan lehetséges, hogy egy meddő asszony idős korában szüljön."
+  },
+  {
+   "anchor": "S2",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Milyen nevetésről van szó a \"וַיִּצְחָק\" szóban: gúnyos nevetésről vagy örömnevetésről?",
+   "answer_hu": "Öröm-nevetés volt, mert Ábrahám nagyon megörült a hírnek és Isten kegyelmén csodálkozott, nem pedig gúnyolódott."
+  },
+  {
+   "anchor": "S4",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Kételkedett-e Ábrahám a \"הַלְּבֶן מֵאָה־שָׁנָה יִוָּלֵד\" kijelentésében, azaz tagadta-e az ígéret valóságát?",
+   "answer_hu": "Nem, a mondat nem az igazság eltávolítására szolgál, hanem a csoda különlegességének kifejezésére."
+  },
+  {
+   "anchor": "S4",
+   "explicit": true,
+   "target": null,
+   "question_hu": "Miért \"יִוָּלֵד\" (passzív/niphal alak) a kifejezés és miért nem \"יוֹלִיד\" (hifil), illetve miért \"הַלְּבֶן\" és nem \"הַבֵּן\"?",
+   "answer_hu": "Azért, mert száz évesen egy férfinak gyermeke születni nem akkora csoda, a nagy csoda az, hogy meddő asszonytól születik fia, ezért a szó a születendő gyermekre vonatkozik."
+  },
+  {
+   "anchor": "S5",
+   "explicit": true,
+   "target": null,
+   "question_hu": "Miért ismétlődik a szövegben a \"וְאִם\" kifejezés, és mit jelent a \"וְאִם־שָׂרָה\" fordulat?",
+   "answer_hu": "Az \"ואם\" kérdő szó, az ismétlés pedig a kérdés nyomatékát és a csodálkozást fejezi ki."
+  },
+  {
+   "anchor": "S6",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért említi a vers a \"הֲבַת־תִּשְׁעִים שָׁנָה\" kifejezésben Sárának kilencven éves korát, és mi a \"הֲ\" kérdő partikula szerepe?",
+   "answer_hu": "A kilencven év hangsúlyozza, hogy Sára meddő és idős, így a születés kétszeres csoda lenne, a \"הֲ\" pedig kérdő partikula, tehát a mondat kérdés."
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "items": [
+  {
+   "anchor": "S2",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Mit jelent a וַיִּצְחָק ige itt: öröm vagy gúnyolódás?",
+   "answer_hu": "Öröm (a תרגום אונקלוס szerint וחדי), vagyis Ábrahám örvendezett az ígéreten, nem gúnyolódott."
+  },
+  {
+   "anchor": "S5",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért nem hitte el Sára az ígéretet úgy, ahogy Ábrahám hitte el?",
+   "answer_hu": "Mert Ábrahám Istentől, a הגבורה szájából hallotta az ígéretet, Sára ellenben egy emberi alakban megjelenő angyaltól."
+  }
+ ]
+}

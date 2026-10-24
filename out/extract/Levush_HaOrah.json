@@ -1,0 +1,39 @@
+{
+ "items": [
+  {
+   "anchor": "S4",
+   "explicit": true,
+   "target": "Rashi",
+   "question_hu": "Vajon bizonyíték-e az, hogy a régi nemzedékek (Sém és Noach nemzetségei) későn kezdtek gyermeket nemzeni, arra, hogy Ábrahámnak a száz évesen való fiúnemzés csodálatos volt?",
+   "answer_hu": "A Ramah szerint nem, mert ezeknél a nemzedékeknél is az első gyermek születése korai volt, és csak a későbbi gyermekek születtek késő korban, így nincs igazi bizonyíték."
+  },
+  {
+   "anchor": "S4",
+   "explicit": true,
+   "target": "הרא\"ם",
+   "question_hu": "Miért csodálkozott Ábrahám önmagán, azon, hogy száz évesen nemzhet gyermeket, ha a csodálkozás valójában csak Sárára vonatkozhatott volna?",
+   "answer_hu": "A Rag\"a azt válaszolja, hogy Ábrahám Iszmáel születése után is tudta, hogy képes nemzeni, így csodálkozása Sára meddőségének megszűnésére irányult; Levush ezt nem tartja megnyugtatónak."
+  },
+  {
+   "anchor": "S5",
+   "explicit": false,
+   "target": "הרג\"א",
+   "question_hu": "Mi magyarázza, hogy Ábrahám a Noách-kori nemzedékek gyors gyermeknemzéséhez képest miért volt meglepve, és miért csak Sára ellen támadt volna kételye?",
+   "answer_hu": "A Rag\"a szerint Ábrahám azért csodálkozott, mert Sára évekig nem fogant, és úgy gondolta, a természet nem enged újabb fogamzást, míg a gyermekvállalás kezdete a természet erejének felülkerekedését jelenti."
+  },
+  {
+   "anchor": "S4",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért nem nemzett Noách háromszáz-ötszáz év előtt gyermeket, és miért kezdett csak ötszáz évesen?",
+   "answer_hu": "Rashi szerint Isten lezárta Noách forrását, hogy ne nemzzen méltatlan gyermekeket, akik miatt a világ pusztulása még nagyobb lett volna."
+  },
+  {
+   "anchor": "S4",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Ha Ábrahám tudta, hogy Isten lezárhatja az ember nemző forrását, miért nem vonta le ebből, hogy saját késői fogantatása is Isten akaratának volt köszönhető, így csodálkozása indokolatlan lett volna?",
+   "answer_hu": "Levush szerint Ábrahámnak így is gondolnia kellett volna, ezért Rashi csodálkozása nagy nehézséget jelent, ha Ábrahám ismerte Isten mértékeit."
+  }
+ ]
+}

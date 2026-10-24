@@ -1,0 +1,25 @@
+{
+ "items": [
+  {
+   "anchor": "S4",
+   "explicit": true,
+   "target": null,
+   "question_hu": "Kérdéses-e a הלבן מאה שנה יולד szóban a הה״א: kérdő (הה״א התימהון) vagy határozott névelő, azaz kijelentés-e a mondat?",
+   "answer_hu": "A ה nem kérdő (התימהון) partikula, hanem valódi, határozott névelő, a mondat tehát kijelentés: a száz éves férfi fog nemzeni."
+  },
+  {
+   "anchor": "S5",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Hogyan értelmezendő a וְאִם־שָׂרָה kifejezés, és mi a kérdés Sára szülésével kapcsolatban?",
+   "answer_hu": "A וְאִם a „hogyan” (איך) jelentésében áll, így a kérdés: hogyan lehetséges, hogy Sára szüljön."
+  },
+  {
+   "anchor": "S6",
+   "explicit": true,
+   "target": null,
+   "question_hu": "Hogyan lehetséges, hogy a kilencvenéves Sára szüljön (הֲבַת־תִּשְׁעִים שָׁנָה תֵּלֵד), ami nyilvánvalóan páratlan csoda?",
+   "answer_hu": "Abrahám később, Sára halála után (137 évesen) újra nősült és nemzett gyermeket, így egy öreg férfi nemzése nem idegen, és a Midrás is ezen az alapon értelmezi a verset."
+  }
+ ]
+}

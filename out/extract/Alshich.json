@@ -1,0 +1,39 @@
+{
+ "items": [
+  {
+   "anchor": "S2",
+   "explicit": true,
+   "target": null,
+   "question_hu": "Ha a וַיִּצְחָק szó nevetést jelent, hogyan nevethetett Ábrahám Isten szaván; ha pedig örömöt, hogyan örülhetett és kételkedhetett egyszerre?",
+   "answer_hu": "A צחק itt öröm, Ábrahám a hír hallatán örvendezett, és ez az öröm nem Isten szavának kétségbevonása volt."
+  },
+  {
+   "anchor": "S3",
+   "explicit": true,
+   "target": null,
+   "question_hu": "Hogyan lehetséges, hogy Ábrahám kétkedett Isten szavában, hiszen Isten már korábban megígérte neki a fiút?",
+   "answer_hu": "Ábrahám nem tagadta Isten szavát, hanem csodálkozva, kérdező formában, szinte öröm és hálaadás közepette fogalmazta meg a csodát."
+  },
+  {
+   "anchor": "S4",
+   "explicit": true,
+   "target": null,
+   "question_hu": "Miért áll a הַלְּבֶן מֵאָה־שָׁנָה szóban a למ\"ד, hiszen a הַבֵּן מֵאָה שָׁנָה elegendő lenne?",
+   "answer_hu": "A למ\"ד a הא\" התימה kérdőszó része, így a mondat csodálkozó kérdés: vajon a száz éves ember fiút nemzhet-e, ami csak neki, Ábrahámnak adatott."
+  },
+  {
+   "anchor": "S4",
+   "explicit": true,
+   "target": null,
+   "question_hu": "Miért יוּלַד (passzív/niphal) és nem יוֹלִיד (hifil) az igealak a „יִוָּלֵד” szóban?",
+   "answer_hu": "Az יִוָּלֵד alak a fiú születésére utal passzívan, a jelentés pedig ugyanaz marad, mint a hifil formáé."
+  },
+  {
+   "anchor": "CTX",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért fordul Ábrahám gondolatai a v. 17 örömteli csodája után azonnal Ismáel felé?",
+   "answer_hu": "Mivel Ábrahám úgy érezte, kegyelmi idő van, a rossz Ismáel sorsáért is könyörgött, hogy az Isten előtt éljen, azaz visszatérjen a bűnbánatra."
+  }
+ ]
+}

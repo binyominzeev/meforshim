@@ -1,0 +1,46 @@
+{
+ "items": [
+  {
+   "anchor": "S4",
+   "explicit": true,
+   "target": null,
+   "question_hu": "Nem a természet rendje ellen való-e, hogy egy száz éves férfinak gyermeke szülessen, és nem tagadja-e Ábrahám szavai ezt a csodát?",
+   "answer_hu": "Isten hatalmában áll a természet ellenére is cselekedni, Ábrahám pedig nem tagadja a csodát, hanem Isten kegyelmét dicséri."
+  },
+  {
+   "anchor": "S3",
+   "explicit": true,
+   "target": "Rashi",
+   "question_hu": "Nem tagadásnak minősül-e Ábrahám gondolata (וַיֹּאמֶר בְּלִבּוֹ), ha úgy értelmezzük, hogy ez a kegyelem Isten korábbi tettei után jön?",
+   "answer_hu": "Nem tagadás, mert Ábrahám csak azt mondja, hogy Isten ennél is nagyobb kegyet tesz vele, így ez Isten dicséretét szolgálja."
+  },
+  {
+   "anchor": "S4",
+   "explicit": true,
+   "target": "Ra\"m",
+   "question_hu": "Miért csodálkozik Ábrahám a száz éves férfi gyermekszülésén (הַלְּבֶן מֵאָה־שָׁנָה יִוָּלֵד), ha már Ábrahám korában megrövidültek az életévek?",
+   "answer_hu": "A Ra\"m kérdése nem találja el a lényeget, mert a csoda nem az életkor puszta ténye, hanem az, hogy mindketten öregek, és az öregség gyengíti a természetet."
+  },
+  {
+   "anchor": "S6",
+   "explicit": true,
+   "target": "Rashi",
+   "question_hu": "Miért hivatkozik Rashi Noé példájára (az ötszáz év utáni nemzésre), és mi a különbség Noé és Ábrahám esete között?",
+   "answer_hu": "Noé esetében a gyermekszülést csak a magzatképzés elzárása gátolta a kizárólagos rendeletből, utána pedig a természet szerint nemzett, ezért nem ellentmondás Rashi érvelésével."
+  },
+  {
+   "anchor": "S5",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért tartja a szöveg döntőnek a Sára életkorát (הֲבַת־תִּשְׁעִים שָׁנָה תֵּלֵד), ha a csoda elsősorban Ábrahámé?",
+   "answer_hu": "A csodálatos az, hogy mindketten, férfi és nő is megöregedtek, ami a természet szerint nem teszi lehetővé a gyermekszülést."
+  },
+  {
+   "anchor": "S4",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért volt a korábbi nemzedékeknek könnyű hatvan-hetven évesen gyermeket nemzeniük, Ábrahámnak pedig száz évesen már csodának számít?",
+   "answer_hu": "Eredetileg a természet még engedte a nemzést, később azonban az életkor rövidülésével és az öregséggel a természet gyengül, így az öregkori nemzés már csoda."
+  }
+ ]
+}

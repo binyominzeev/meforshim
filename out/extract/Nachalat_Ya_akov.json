@@ -1,0 +1,25 @@
+{
+ "items": [
+  {
+   "anchor": "S4",
+   "explicit": true,
+   "target": null,
+   "question_hu": "Miért említi Ábrahám örömében, a fiú születésének bejelentésekor, hogy a száz éves férfi fiat nemz (הלבן מאה שנה יולד)? Mi az üzenete ennek a kijelentésnek a kontextusban?",
+   "answer_hu": "Ábrahám a rossz hajlam (a zohama) megszűnésére és a világ elkövetkező korszakának (עולם הבא) közeledtére gondolt: az öregkor miatt a vágy elapad, ezért mondta ezt örömmel."
+  },
+  {
+   "anchor": "S6",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Mit jelent az, hogy Sára kilencven évesen szül (הבת תשעים שנה תלד), és miért fontos ez a szöveg kontextusában?",
+   "answer_hu": "Sára kilencven éves kora jelzi, hogy a vágy és a szexuális hajlam elmúlt, így a gyermek a rossz kiirtásának és a messiási kornak a jele."
+  },
+  {
+   "anchor": "S5",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért kapcsolódik Ábrahám öröme a bűn és a születés összefüggéséhez, azaz miért idézi Dávid szavait a bűnös születésről a szöveg kontextusában?",
+   "answer_hu": "Ábrahám a születés bűnös eredetéből (a zohamából) való megtisztulást látta abban, hogy ő és Sára megöregszenek, így a rossz kiirtódik a világból."
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "items": [
+  {
+   "anchor": "CTX",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Mit jelent a csoda vagy a 'nisz' fogalma ebben az esetben: a Sárának kilencven évesen fogant gyermek pusztán a természet felfüggesztése, vagy a természeti törvények isteni célú felhasználása?",
+   "answer_hu": "A csoda nem csupán a természet felülírása, hanem a természeti rend isteni gondviselésből fakadó, célzott felhasználása."
+  },
+  {
+   "anchor": "S6",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Hogyan lehetséges, hogy a kilencven éves Sára szüljön, amikor a női természetes működés ebben a korban már megszűnik?",
+   "answer_hu": "A szerző egy modern orvosi esetet hoz példaként, amelyben egy nő kilencvenhárom évesen, ötvenkét éves kora után újra menstruált, így a jelenség természeti keretek között is előfordulhat."
+  }
+ ]
+}

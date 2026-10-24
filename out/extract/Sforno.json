@@ -1,0 +1,18 @@
+{
+ "items": [
+  {
+   "anchor": "S4",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Hogyan lehetséges, hogy egy száz éves férfi gyermeket nemzzen (הַלְּבֶן מֵאָה שָׁנָה יִוָּלֵד)?",
+   "answer_hu": "A nő még fiatal férfi közösülésekor is fogan az életkor után, de egy öreg férfitól nem, tehát a száz éves apaság a természetes rend szerint lehetetlen."
+  },
+  {
+   "anchor": "S6",
+   "explicit": true,
+   "target": null,
+   "question_hu": "Hogyan szülhet egy kilencven éves asszony (הֲבַת־תִּשְׁעִים שָׁנָה תֵּלֵד)?",
+   "answer_hu": "Kilencven évesen egyetlen férfi közösülésétől sem fogan meg a nő, még fiatal férfitól sem, tehát a fogantatás természetes úton lehetetlen."
+  }
+ ]
+}

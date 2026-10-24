@@ -1,0 +1,32 @@
+{
+ "items": [
+  {
+   "anchor": "S1",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Mit jelent a „וַיִּפֹּל אַבְרָהָם עַל־פָּנָיו” kifejezés, és milyen lelkiállapotot fejez ki?",
+   "answer_hu": "Az arcra vetődés alázatos behódolást, önmegalázást fejez ki az isteni üzenet előtt."
+  },
+  {
+   "anchor": "S3",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Mit jelent a „וַיֹּאמֶר בְּלִבּוֹ” kifejezés, vagyis Ábrahám kimondatlan gondolata miben állt?",
+   "answer_hu": "Ábrahám a szívében, belsőleg fogalmazta meg kétkedését, a kérdés tehát gondolatának tartalma."
+  },
+  {
+   "anchor": "S4",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért mondja Ábrahám, hogy „מֵאָה שָׁנָה” lesz az a kor, amikor a fia születik, holott ő akkor 99 éves volt?",
+   "answer_hu": "A száz év az a kor, amelyben fia születne, ha Sára most fogana, hiszen Ábrahám akkor 99 éves volt és egy év múlva született volna a gyermek."
+  },
+  {
+   "anchor": "S6",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Lehetséges-e természetes módon, hogy a kilencven éves Sára gyermeket szüljön?",
+   "answer_hu": "Nem, ez nyilvánvalóan ellentétes a természet törvényeivel, tehát csak csodaként valósulhat meg."
+  }
+ ]
+}

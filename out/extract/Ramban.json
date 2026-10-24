@@ -1,0 +1,53 @@
+{
+ "items": [
+  {
+   "anchor": "S2",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Mit jelent a \"ויצחק\" ige ebben a versben, vagyis Ábrahám nevetése gúnyt vagy örömet fejez-e ki?",
+   "answer_hu": "Onkelosz szerint \"וחדי\" (örvendezett), mert a nevetés lehet öröm is, és Ábrahám öröme ebben a helyzetben a hit jele volt."
+  },
+  {
+   "anchor": "S3",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Mit jelent, hogy Ábrahám \"a szívében\" (\"בלבו\") mondta, amit mond, és mire utal ez a belső gondolat?",
+   "answer_hu": "A szívében mondottak azt jelentik, hogy Ábrahám örömében úgy gondolta: ez a csoda nevetésre méltó, mert nagyon csodálatos."
+  },
+  {
+   "anchor": "S4",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Kérdő értelmű-e a \"הלבן מאה שנה יולד\" mondat, vagy kijelentés, illetve tagadás?",
+   "answer_hu": "Ramban szerint kérdés, amely a csodálkozást fejezi ki, nem pedig a lehetetlenség tagadása, hasonlóan más bibliai kérdésekhez."
+  },
+  {
+   "anchor": "S4",
+   "explicit": true,
+   "target": null,
+   "question_hu": "Miért lenne csodálatos, ha egy száz éves férfi gyermeket nemz, hiszen a korabeli nemzedékekben száz és kilencven évesek is nemzettek gyermeket?",
+   "answer_hu": "A csoda nem a férfi korában rejlik, hanem abban, hogy Ábrahám kilencvenkilenc éves kora után már felhagyott a nőkkel való kapcsolattal, így Sárától való gyermek most teljesen váratlan volt."
+  },
+  {
+   "anchor": "S5",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért nem mondta Isten kezdetben, hogy a fiú Sárától születik, hanem csak később, a 16. versben?",
+   "answer_hu": "Azért, mert Ábrahám úgy tudta, hogy már nem él nemi életet, így az Isten által előre nem jelzett Sárától való születés csak később vált világossá."
+  },
+  {
+   "anchor": "S6",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért rövid és elliptikus a \"ואם שרה בת תשעים שנה תלד\" kérdés szerkezete, és mihez kapcsolódik grammatikailag?",
+   "answer_hu": "A kérdés a \"ויצחק\" szóhoz kapcsolódik, a szöveg pedig a csodálkozás miatt rövidíti le a mondatot, mintegy tömören jelezve a kérdést."
+  },
+  {
+   "anchor": "CTX",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Ábrahám nevetése kétkedés vagy hit jele volt, és ez hogyan függ össze a fiú nevének, Izsáknak a magyarázatával?",
+   "answer_hu": "A nevetés öröm és hit jele volt, ezért parancsolta Isten a fiú nevét \"Izsáknak\", a nevetésre utalva, amelyet Sára is később megemlít."
+  }
+ ]
+}

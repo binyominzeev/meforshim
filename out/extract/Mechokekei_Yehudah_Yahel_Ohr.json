@@ -1,0 +1,32 @@
+{
+ "items": [
+  {
+   "anchor": "S6",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért nevezi a szöveg csodának Sára kilencven éves korában történő szülését, és miben áll a csoda?",
+   "answer_hu": "Sára természetéből fakadóan meddő volt, ezért a kilencven évesen történő fogantatás természetfeletti csoda."
+  },
+  {
+   "anchor": "S4",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Hogyan lehetséges, hogy Ábrahám száz évesen gyermeket nemzzen?",
+   "answer_hu": "A Radak részletesen kifejti a kérdést, a magyarázata a szöveg természetfeletti jellegére utal (a Mechokekei Yehudah ennek kifejtését a Radakra utalja)."
+  },
+  {
+   "anchor": "S4",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Elfogadható-e, hogy egy férfi száz évesen nemzzen, tekintve, hogy a későbbi nemzedékekben ez nem volt szokásos?",
+   "answer_hu": "Ábrahám korában az emberek életkora hosszabb volt, mint Dávid nemzedékében; a Ruth-könyvi nemzetségi lista (Salmon, Boáz, Óbed, Isai) szerint mindegyikük kilencvenegy évesen nemzett, ami mutatja, hogy a korai ősöknél ez természetes volt."
+  },
+  {
+   "anchor": "S4",
+   "explicit": true,
+   "target": "Ibn Ezra",
+   "question_hu": "Érthető-e Ibn Ezra magyarázata a Ruth-könyvi nemzetségi számításról, amely az Ábrahám-korabeli hosszú életkorról szól?",
+   "answer_hu": "Az idézett szöveg hiányos és elírt, a helyes olvasat szerint Dávid ősei mindannyian kilencvenegy évesen nemzettek, és Ábrahám korában az életkor hosszabb volt."
+  }
+ ]
+}

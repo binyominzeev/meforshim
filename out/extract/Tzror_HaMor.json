@@ -1,0 +1,32 @@
+{
+ "items": [
+  {
+   "anchor": "S1",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért fekszik Ábrahám arcra a földre, amikor meghallja az ígéretet?",
+   "answer_hu": "A gezerah (végleges isteni határozat) itt pecsételődik meg, és Ábrahám úgy érzi, nem méltó ilyen jutalomra, ezért borul le."
+  },
+  {
+   "anchor": "S3",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Mit gondolt Ábrahám a szívében, amikor a nevetése és a földre borulása történt?",
+   "answer_hu": "Nem hitte, hogy száz éves férfinak gyermeke születhet, és ezt a gondolatot magában tartotta."
+  },
+  {
+   "anchor": "S5",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért mondja Isten, hogy Sára szül fiút, holott Ábrahám Ismáelt kérte, és ez nem volt méltó jutalom?",
+   "answer_hu": "Isten ellenére is teljesíti szavát: Sára fiút szül, mert Ábrahám Ismáelre vonatkozó kérését csak részben fogadja el, a gyermek Sárától származik, bár ez nem volt érdemes."
+  },
+  {
+   "anchor": "CTX",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért köti Isten a szövetségét Izsákkal, és nem Ismáellel, ha Ábrahám Ismáelre vonatkozó kérését Isten meghallgatta?",
+   "answer_hu": "Isten Ismáel nagy néppé tételével teljesíti Ábrahám kérését, de a szövetséget Izsákkal köti, mert Izsák már az anyaméhben szentelt volt."
+  }
+ ]
+}

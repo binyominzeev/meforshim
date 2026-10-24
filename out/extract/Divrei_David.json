@@ -1,0 +1,32 @@
+{
+ "items": [
+  {
+   "anchor": "S4",
+   "explicit": true,
+   "target": "Rashi",
+   "question_hu": "Mi a különbség aszerint, hogy az emberek életkora lerövidült, ha a termékenység korhatára mégis a régi korokhoz képest arányosan maradt meg, vagyis miért nehéz Rásit magyarázata (hogy Ábrahám ereje gyengült) a Ráma szerint?",
+   "answer_hu": "A Divrei David szerint a Ráma kérdése nem helytálló, mert ha az életkor megrövidült, a termékenység ideje is arányosan csökkent, így Ábrahám ereje már a szokásos idő előtt elhagyta."
+  },
+  {
+   "anchor": "S4",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Miért csodálkozott Ábrahám a saját korán, és miért mondta szívében, hogy száz évesen nem születhet gyermek?",
+   "answer_hu": "Ábrahám a saját öregségén csodálkozott, mert ereje a kora előtt, idő előtt elhagyta, és korában már senki sem nemzett gyermeket."
+  },
+  {
+   "anchor": "S3",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Mi okozta Ábrahám csodálkozását a szíve mélyén, amikor a fiúgyermek ígéretét hallotta?",
+   "answer_hu": "Egyik magyarázat szerint Ábrahám csodálkozása abból fakadt, hogy Sárától eddig nem született gyermeke."
+  },
+  {
+   "anchor": "S6",
+   "explicit": false,
+   "target": null,
+   "question_hu": "Hogyan értelmezhető, hogy Ábrahám ereje gyengülése miatt nem nemzhetett, ha ez ellentmond annak, hogy Rási szerint az ő kora még nem volt olyan rövid, mint később?",
+   "answer_hu": "A Divrei David szerint ha nem így volna, Rási nem mondta volna, hogy Ábrahám ereje meggyengült, tehát a gyengülés valóságos volt."
+  }
+ ]
+}
